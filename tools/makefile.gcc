@@ -1,0 +1,13 @@
+all:
+	@echo "Making cstools-3.5"
+	cd cstools-3.5; make
+	@echo "Making CS_Lex"
+	cd CS_Lex; make
+	@echo "Making rcc"
+	cd rcc; make
+
+clean:
+	rm -f Tools.dll cs_lex.exe lg.exe pg.exe rcc.exe
+	cd cstools-3.5; make clean
+	cd CS_Lex; make clean
+	cd rcc; make clean

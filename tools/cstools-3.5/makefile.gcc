@@ -1,0 +1,18 @@
+# Creates lg.exe, pg.exe, and Tools.dll
+# Be sure that Mono is installed
+
+all:
+	gmcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase0.cs
+	gmcs -debug+ -warn:0 -r:Tools.dll lg.cs
+	mono lg.exe pg.lexer ptokens
+	gmcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
+	mono lg.exe cs0.lexer cs0tokens
+	mono pg.exe -Ics0tokens cs0.parser cs0syntax
+	gmcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase.cs cs0tokens.cs cs0syntax.cs
+	gmcs -debug+ -warn:0 -r:Tools.dll lg.cs
+	gmcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
+	rm -f ../pg.exe ../lg.exe ../Tools.dll
+	cp pg.exe lg.exe Tools.dll ..
+
+clean:
+	rm -f lg.exe pg.exe Tools.dll
