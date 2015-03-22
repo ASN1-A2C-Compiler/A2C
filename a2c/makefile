@@ -12,7 +12,7 @@ SOURCES = AsnFile.cs C_Emitter.cs C_Sharp_Emitter.cs CodeEmitter.cs Constraints.
 a2c: $(SOURCES)
 	csc /out:a2c.exe /debug+ /warn:0 $(SOURCES)
 	@echo "Running a sanity test to see if the new a2c.exe works"
-	a2c.exe -out=sanitytest ..\test\rfc5280.asn ..\test\pkix-common.asn ..\test\algorithm-class.asn
+	a2c.exe -out=sanitytest ..\test\rfc5280.asn ..\test\pkix-common.asn ..\test\algorithm-class.asn ..\test\rfc4055.asn ..\test\rfc3279.asn
 	del /F sanitytest.*
 	@echo "Copying a2c to the distribution base"
 	copy a2c.exe ..

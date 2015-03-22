@@ -7,12 +7,12 @@ RCC = ../tools/rcc.exe
 
 SOURCES = AsnFile.cs C_Emitter.cs C_Sharp_Emitter.cs CodeEmitter.cs Constraints.cs \
 	Error.cs lex.l.cs LogError.cs parser.y.cs Program.cs Rule.cs SymbolTable.cs \
-	Token.cs Type.cs Value.cs
+	Token.cs Type.cs Value.cs Viewer_Emitter.cs
 
 a2c: $(SOURCES)
 	gmcs -out:a2c.exe -debug+ -warn:0 $(SOURCES)
 	@echo "Running a sanity test to see if the new a2c.exe works"
-	mono a2c.exe -out=sanitytest ../test/rfc3280.asn
+	mono a2c.exe -out=sanitytest ../test/rfc5280.asn ..\test\pkix-common.asn ..\test\algorithm-class.asn ..\test\rfc4055.asn ..\test\rfc3279.asn
 	rm -f sanitytest.*
 	@echo "Copying a2c to the distribution base"
 	cp a2c.exe ..
