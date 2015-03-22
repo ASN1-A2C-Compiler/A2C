@@ -1,0 +1,8 @@
+language: csharp
+
+before_install:
+- sudu apt-get update
+- sudu apt-get gcc
+
+after_script:
+ 

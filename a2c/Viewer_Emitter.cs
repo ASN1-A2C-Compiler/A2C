@@ -846,7 +846,7 @@ namespace asn_compile_cs
                                 else {
                                     //  Need to figure out this sooner or later to set an object class on the node.
 
-                                    cNode.objectClass =  EmitObjectClass(typ.subType);
+                        // M00BUG            cNode.objectClass =  EmitObjectClass(typ.subType);
                                 }
 
                                 Debug.Assert(typ.subType.fieldTokens.Count == 1);
