@@ -29,6 +29,15 @@
 
 # Emacs files
 *~
+\#*
 
 # Debugging files
 *.pdb
+
+# Autobuilt files
+a2c/lex.l.cs
+a2c/parser.y.cs
+tools/cstools-3.5/ptokens.cs
+tools/rcc/lex.cs
+tools/rcc/parser.cs
+tools/cstools-3.5/cs0tokens.cs

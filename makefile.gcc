@@ -1,0 +1,4 @@
+all:
+	cd tools; make clean; make
+	cd a2c; make clean; make
+	cd runtime/C; make clean; make

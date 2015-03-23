@@ -1,0 +1,21 @@
+# Makefile for rcc
+#
+# Be sure that Mono is installed
+
+LEXER = ../lg.exe
+YACC = ../pg.exe
+TOOLS = ../Tools.dll
+
+rcc.exe: lex.cs parser.cs program.cs 
+	gmcs -out:rcc.exe -r:$(TOOLS) -debug+ -warn:0 lex.cs parser.cs program.cs
+	rm -f ../rcc.exe
+	cp rcc.exe ../rcc.exe
+
+lex.cs: lex.l
+	mono $(LEXER) lex.l lex
+
+parser.cs: parser.y
+	mono $(YACC) -Ilex parser.y parser
+
+clean:
+	rm -f rcc.exe lex.cs parser.cs
