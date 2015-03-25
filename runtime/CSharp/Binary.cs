@@ -56,7 +56,7 @@ namespace A2C
             }
             catch (NeedMoreDataException e) {
                 e.context.Frames.Push(new Frame(stmData));
-                throw e;
+                throw;
             }
         }
 
@@ -198,7 +198,7 @@ namespace A2C
                 }
                 catch (NeedMoreDataException e) {
                     e.context.Frames.Push (new Frame (cbData));
-                    throw e;
+                    throw;
                 }
             }
         }

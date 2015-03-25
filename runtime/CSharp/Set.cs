@@ -159,8 +159,8 @@ namespace A2C
                             //  Just try the next field in the table
                         }
                         catch (NeedMoreDataException e) {
-                            if (cbLength == -1) throw e;
-                            if (cbLength < stmT.Length) throw e;
+                            if (cbLength == -1) throw;
+                            if (cbLength < stmT.Length) throw;
 
                             throw new MalformedEncodingException ("Invalid Set encoding");
                         }
@@ -172,7 +172,7 @@ namespace A2C
 
                 }
                 catch (NeedMoreDataException e) {
-                    throw e;
+                    throw;
                 }
             }
 
