@@ -233,7 +233,7 @@ namespace A2C
 
                 e.context.Frames.Push (new Frame (dataSaved));
 
-                throw e;
+                throw;
             }
         }
     }

@@ -73,7 +73,7 @@ namespace A2C
             }
             catch (NeedMoreDataException e) {
                 e.context.Frames.Push (new Frame (stmDst));
-                throw e;
+                throw;
             }
         }
 

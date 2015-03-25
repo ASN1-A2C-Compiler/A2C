@@ -261,7 +261,7 @@ namespace A2C
                         else if (m_tableX[iField].Default != null) {
                             m_data[iField] = m_tableX[iField].Default; // Should be a clone
                         }
-                        else throw e;
+                        else throw;
                     }
                     catch (NeedMoreDataException e) {
                         //
@@ -275,8 +275,8 @@ namespace A2C
                         //      all of them then we need more data
                         //
 
-                        if (cbLength == -1) throw e;
-                        if (cbLength < stmT.Length) throw e;
+                        if (cbLength == -1) throw;
+                        if (cbLength < stmT.Length) throw;
 
                         //
                         //  We aren't really short of bytes - we had a potential decoding issue.
@@ -298,7 +298,7 @@ namespace A2C
                         stmIn.Advance(stmT.Current);
                     }
                     e.context.Frames.Push(new Frame(cbLength, iField));
-                    throw e;
+                    throw;
                 }
 
                 /*
