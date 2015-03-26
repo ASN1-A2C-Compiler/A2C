@@ -6,7 +6,7 @@ before_install:
 - sudo apt-get install python 
 
 script:
-  - cd Housekeeping
+  - cd HouseKeeping
   - make mono
   - cd ..
   - make -f makefile
