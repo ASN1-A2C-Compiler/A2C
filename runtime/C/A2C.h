@@ -30,7 +30,7 @@
 #endif
 
 #ifndef _MCS_VER
-#define __cdecl __attibute__((__cdecl__))
+#define __cdecl 
 #endif
 
 #include "A2C_Base.h"
