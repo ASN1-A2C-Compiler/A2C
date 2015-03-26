@@ -25,9 +25,13 @@
  * of this software, even if advised of the possibility of such damage.
  */
 
-//#include <crtdbg.h>
+#ifdef _MSC_VER
+#include <crtdbg.h>
+#endif
 
+#ifndef _MCS_VER
 #define __cdecl __attibute__((__cdecl__))
+#endif
 
 #include "A2C_Base.h"
 #include "A2C_Binary.h"
