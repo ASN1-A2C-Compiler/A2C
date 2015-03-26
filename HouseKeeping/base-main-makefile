@@ -1,0 +1,13 @@
+all:
+MONO:	cd tools; make clean; make
+MONO:	cd a2c; make clean; make
+MONO:	cd runtime/C; make clean; make
+NET:	cd tools
+NET:	nmake clean
+NET:	nmake
+NET:	cd ..\a2c
+NET:	nmake clean
+NET:	nmake
+NET:	cd ..\runtime\C
+NET:	nmake clean
+NET:	nmake

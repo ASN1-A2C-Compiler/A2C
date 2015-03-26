@@ -1,0 +1,60 @@
+OBJDIR=
+A2C_OBJS = $(OBJDIR)A2C_Base.o $(OBJDIR)A2C_Binary.o $(OBJDIR)A2C_BitString.o $(OBJDIR)A2C_Boolean.o \
+	$(OBJDIR)A2C_Choice.o $(OBJDIR)A2C_Der.o $(OBJDIR)A2C_Enumerated.o \
+	$(OBJDIR)A2C_Integer.o $(OBJDIR)A2C_Null.o $(OBJDIR)A2C_ObjectIdentifier.o \
+	$(OBJDIR)A2C_ObjectDescriptor.o $(OBJDIR)A2C_OctetString.o $(OBJDIR)A2C_OpenType.o \
+	$(OBJDIR)A2C_Sequence.o $(OBJDIR)A2C_Seq_Of.o $(OBJDIR)A2C_Set.o $(OBJDIR)A2C_Set_Of.o \
+	$(OBJDIR)A2C_Stream.o $(OBJDIR)A2C_String.o $(OBJDIR)A2C_Tag.o $(OBJDIR)A2C_Time.o \
+	$(OBJDIR)A2C_Stream_File.o
+
+NET:A2C_OBJS=$(A2C_OBJS:.o=.obj)
+NET:CFLAGS = /Zi /W4 /D_CRT_SECURE_NO_WARNINGS /Gy /nologo /wd4996 $(CFLAGS_DEBUG)
+MONO:CFLAGS = -pedantic
+
+$(OBJDIR)A2C_Runtime.lib: $(A2C_OBJS)
+NET:	lib /out:$(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
+MONO:	ar -s -r $(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
+
+rel:
+	-mkdir release
+	nmake $(MAKEFLAGS) OBJDIR="release/"
+
+dbg:
+	-mkdir debug
+	nmake $(MAKEFLAGS) OBJDIR="debug/" CFLAGS_DEBUG="/MDd"
+
+both:
+	nmake dbg $(MAKEFLAGS)
+	nmake rel $(MAKEFLAGS)
+
+NET:{.}.c{$(OBJDIR)}.obj:
+MONO:{.}.c{$(OBJDIR)}.o:
+	$(CC) $(CFLAGS) -Fo$(OBJDIR) -Fd$(OBJDIR) -c $<
+
+A2C_BitString.c: A2C_BitString.h A2C_Der.h A2C_Base.h
+A2C_Boolean.c: A2C_Boolean.h A2C_Der.h
+A2C_Choice.c: A2C_Choice.h A2C_Base.h
+A2C_Der.c: A2C_Der.h A2C_Stream_Internal.h
+A2C_Enumerated.c: A2C_Enumerated.h A2C_Integer.h A2C_Der.h A2C_Base.h
+A2C_Integer.c: A2C_Integer.h A2C_Der.h A2C_Base.h
+A2C_Null.c: A2C_Null.h A2C_Base.h
+A2C_ObjectDescriptor.c: A2C_String.h A2C_ObjectDescriptor.h
+A2C_ObjectIdentifier.c: A2C_ObjectIdentifier.h A2C_Der.h A2C_Base.h
+A2C_OctetString.c: A2C_OctetString.h A2C_Der.h A2C_Base.h
+A2C_OpenType.c: A2C_OpenType.h A2C_Der.h A2C_Base.h
+A2C_Seq_Of.c: A2C_Seq_Of.h A2C_Sequence.h A2C_Der.h A2C_Base.h
+A2C_Sequence.c: A2C_Sequence.h A2C_Der.h A2C_Base.h A2C_Tag.h
+A2C_Set.c: A2C_Set.h A2C_Sequence.h A2C_Base.h
+A2C_Set_Of.c: A2C_Set_Of.h A2C_Sequence.h A2C_Der.h A2C_Base.h
+A2C_Stream.c: A2C_Stream.h A2C_Stream_Internal.h
+A2C_String.c: A2C_String.h
+A2C_Tag.c: A2C_Tag.h
+A2C_Time.c: A2C_Time.h A2C_Der.h
+
+A2C_Base.h: A2C_System.h A2C_Error.h A2C_Stream.h
+A2C_Boolean.h: A2C_Base.h
+A2C_Time.h: A2C_Base.h A2C_String.h
+
+clean:
+NET:	del /F *.o *.obj *.lib
+MONO:	rm -f *.o *.obj *.lib

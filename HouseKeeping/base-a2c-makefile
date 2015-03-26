@@ -1,0 +1,39 @@
+# Makefile for a2c
+#
+NET:# Be sure that the .NET development tools are installed
+MONO:# Be sure that Mono is installed
+
+NET:LEXER = ..\tools\cs_lex.exe
+NET:RCC = ..\tools\rcc.exe
+MONO:LEXER = ../tools/cs_lex.exe
+MONO:RCC = ../tools/rcc.exe
+
+SOURCES = AsnFile.cs C_Emitter.cs C_Sharp_Emitter.cs CodeEmitter.cs Constraints.cs \
+	Error.cs lex.l.cs LogError.cs parser.y.cs Program.cs Rule.cs SymbolTable.cs \
+	Token.cs Type.cs Value.cs Viewer_Emitter.cs
+
+a2c: $(SOURCES)
+NET:	csc /out:a2c.exe /debug+ /warn:0 $(SOURCES)
+NET:	@echo "Running a sanity test to see if the new a2c.exe works"
+NET:	a2c.exe -out=sanitytest ..\test\rfc5280.asn ..\test\pkix-common.asn ..\test\algorithm-class.asn ..\test\rfc4055.asn ..\test\rfc3279.asn
+NET:	del /F sanitytest.*
+NET:	@echo "Copying a2c to the distribution base"
+NET:	copy a2c.exe ..
+MONO:	gmcs -out:a2c.exe -debug+ -warn:0 $(SOURCES)
+MONO:	@echo "Running a sanity test to see if the new a2c.exe works"
+MONO:	mono a2c.exe -out=sanitytest ..\test\rfc5280.asn ..\test\pkix-common.asn ..\test\algorithm-class.asn ..\test\rfc4055.asn ..\test\rfc3279.asn
+MONO:	rm -f sanitytest.*
+MONO:	@echo "Copying a2c to the distribution base"
+MONO:	cp a2c.exe ..
+
+lex.l.cs: lex.l
+NET:	$(LEXER) lex.l
+MONO:	mono $(LEXER) lex.l
+
+parser.y.cs: parser.y
+NET:	$(RCC) -quiet parser.y
+MONO:	mono $(RCC) -quiet parser.y
+
+clean:
+NET:	del /F lex.l.cs parser.y.cs a2c.exe
+MONO:	rm -f lex.l.cs parser.y.cs a2c.exe

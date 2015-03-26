@@ -1,0 +1,31 @@
+# Makefile for rcc
+#
+NET:# Be sure that the .NET development tools are installed
+MONO:# Be sure that Mono is installed
+
+NET:LEXER = ..\lg.exe
+NET:YACC = ..\pg.exe
+NET:TOOLS = ..\Tools.dll
+MONO:LEXER = ../lg.exe
+MONO:YACC = ../pg.exe
+MONO:TOOLS = ../Tools.dll
+
+rcc.exe: lex.cs parser.cs program.cs 
+NET:	csc /out:rcc.exe /r:$(TOOLS) /debug+ /warn:0 lex.cs parser.cs program.cs
+NET:	del /F ..\rcc.exe
+NET:	copy rcc.exe ..\rcc.exe 
+MONO:	gmcs -out:rcc.exe -r:$(TOOLS) -debug+ -warn:0 lex.cs parser.cs program.cs
+MONO:	rm -f ../rcc.exe
+MONO:	cp rcc.exe ../rcc.exe
+
+lex.cs: lex.l
+NET:	$(LEXER) lex.l lex
+MONO:	mono $(LEXER) lex.l lex
+
+parser.cs: parser.y
+NET:	$(YACC) -Ilex parser.y parser
+MONO:	mono $(YACC) -Ilex parser.y parser
+
+clean:
+NET:	del /F rcc.exe lex.cs parser.cs
+MONO:	rm -f rcc.exe lex.cs parser.cs
