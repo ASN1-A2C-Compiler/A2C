@@ -27,6 +27,8 @@
 
 //#include <crtdbg.h>
 
+#define __cdecl __attibute__((__cdecl__))
+
 #include "A2C_Base.h"
 #include "A2C_Binary.h"
 #include "A2C_BitString.h"

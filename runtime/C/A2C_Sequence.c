@@ -49,7 +49,7 @@ typedef struct {
  *  compare - comparison sort function
  */
 
-int cdecl compare(const void * a, const void * b)
+int __cdecl compare(const void * a, const void * b)
 {
     Element * pa = (Element *) a;
     Element * pb = (Element *) b;
