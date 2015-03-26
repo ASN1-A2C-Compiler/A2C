@@ -35,7 +35,5 @@ foreach my $ThisName (@FilesToProcess) {
 	close(NET); close(MONO);
 	my $NetName = File::Spec->catfile('..', 'NET-files', "$ThisName-NET");
 	my $MonoName = File::Spec->catfile('..', 'Mono-files', "$ThisName-Mono");
-	copy("$ThisName-NET", $NetName) or die "Failed to copy $ThisName-NET\n";
-	copy("$ThisName-Mono", $MonoName) or die "Failed to copy $ThisName-Mono\n";
 }
 
