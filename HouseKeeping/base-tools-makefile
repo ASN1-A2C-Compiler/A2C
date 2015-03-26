@@ -1,0 +1,29 @@
+all:
+MONO:	@echo "Making cstools-3.5"
+MONO:	cd cstools-3.5; make
+MONO:	@echo "Making CS_Lex"
+MONO:	cd CS_Lex; make
+MONO:	@echo "Making rcc"
+MONO:	cd rcc; make
+NET:	@echo Making cstools-3.5
+NET:	cd cstools-3.5
+NET:	nmake
+NET:	@echo Making CS_Lex
+NET:	cd ..\CS_Lex
+NET:	nmake
+NET:	@echo Making rcc
+NET:	cd ..\rcc
+NET:	nmake
+
+clean:
+MONO:	rm -f Tools.dll cs_lex.exe lg.exe pg.exe rcc.exe
+MONO:	cd cstools-3.5; make clean
+MONO:	cd CS_Lex; make clean
+MONO:	cd rcc; make clean
+NET:	del /F Tools.dll cs_lex.exe lg.exe pg.exe rcc.exe
+NET:	cd cstools-3.5
+NET:	nmake clean
+NET:	cd ..\CS_Lex
+NET:	nmake clean
+NET:	cd ..\rcc
+NET:	nmake clean

@@ -7,11 +7,13 @@ A2C_OBJS = $(OBJDIR)A2C_Base.o $(OBJDIR)A2C_Binary.o $(OBJDIR)A2C_BitString.o $(
 	$(OBJDIR)A2C_Stream.o $(OBJDIR)A2C_String.o $(OBJDIR)A2C_Tag.o $(OBJDIR)A2C_Time.o \
 	$(OBJDIR)A2C_Stream_File.o
 
-A2C_OBJS=$(A2C_OBJS:.o=.obj)
-CFLAGS = /Zi /W4 /D_CRT_SECURE_NO_WARNINGS /Gy /nologo /wd4996 $(CFLAGS_DEBUG)
+NET:A2C_OBJS=$(A2C_OBJS:.o=.obj)
+NET:CFLAGS = /Zi /W4 /D_CRT_SECURE_NO_WARNINGS /Gy /nologo /wd4996 $(CFLAGS_DEBUG)
+MONO:CFLAGS = -pedantic
 
 $(OBJDIR)A2C_Runtime.lib: $(A2C_OBJS)
-	lib /out:$(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
+NET:	lib /out:$(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
+MONO:	ar -s -r $(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
 
 rel:
 	-mkdir release
@@ -25,7 +27,8 @@ both:
 	nmake dbg $(MAKEFLAGS)
 	nmake rel $(MAKEFLAGS)
 
-{.}.c{$(OBJDIR)}.obj:
+NET:{.}.c{$(OBJDIR)}.obj:
+MONO:{.}.c{$(OBJDIR)}.o:
 	$(CC) $(CFLAGS) -Fo$(OBJDIR) -Fd$(OBJDIR) -c $<
 
 A2C_BitString.c: A2C_BitString.h A2C_Der.h A2C_Base.h
@@ -53,4 +56,5 @@ A2C_Boolean.h: A2C_Base.h
 A2C_Time.h: A2C_Base.h A2C_String.h
 
 clean:
-	del /F *.o *.obj *.lib
+NET:	del /F *.o *.obj *.lib
+MONO:	rm -f *.o *.obj *.lib

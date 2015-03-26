@@ -6,9 +6,13 @@ SOURCES = CS_Lex.cs CLexGen.cs CInput.cs CSpec.cs CMakeNfa.cs \
 	CError.cs CUtility.cs CDTrans.cs CAlloc.cs mEnum.cs
 
 cs_lex.exe: $(SOURCES)
-	gmcs -out:cs_lex.exe -debug+ -warn:0 $(SOURCES)
-	rm -f ../cs_lex.exe
-	cp cs_lex.exe ..
+NET:	csc /out:cs_lex.exe /debug+ /warn:0 $(SOURCES)
+NET:	del /F ..\cs_lex.exe
+NET:	copy cs_lex.exe ..\cs_lex.exe
+MONO:	gmcs -out:cs_lex.exe -debug+ -warn:0 $(SOURCES)
+MONO:	rm -f ../cs_lex.exe
+MONO:	cp cs_lex.exe ..
 
 clean:
-	rm -f cs_lex.exe
+NET:	del /F cs_lex.exe
+MONO:	rm -f cs_lex.exe
