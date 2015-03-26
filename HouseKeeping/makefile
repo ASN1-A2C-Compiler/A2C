@@ -5,7 +5,7 @@ mono:
 	@echo "This batch file deletes the current makefiles and copies"
 	@echo "  new copies from this directory into the proper places"
 
-	ProcessMakeFiles.pl
+	perl ProcessMakeFiles.pl
 
 	@echo "Deleting current makefile for a2c"
 	rm -f ../a2c/makefile$(EXT)
