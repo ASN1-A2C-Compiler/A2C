@@ -53,10 +53,6 @@ To obtain *a2c*, see the *a2c*'s project page at:
 
 *a2c* is written in C#, a language similar to C but with additional features. If you do not care about compiling *a2c* yourself, and instead use the distributed binary version, you do not need any C# tools. However, to execute a2c.exe, you will still need the .NET framework on Windows (which is built into most modern versions of Windows) or Mono (which is generally not built into Linux, BSD, or other systems).
 
-If you do not want to even install *a2c* but still want to compile your ASN.1 modules, you can use a free web-based system available at:
-    http://a2c-compiler.proper.com
-That service is basically just a web-based interface to *a2c*. It has less functionality than *a2c* in that you cannot change any command-line options, but it suffices for most uses. This service is not guaranteed to be available at any particular time. 
-
 Most programmers who use *a2c* will also want  to use *a2c*'s runtime library for gluing some of *a2c*'s functions into your C code. That library is platform-specific (and in some cases compiler-specific), and is only distributed in source code form. Thus, in order to use the output of *a2c* with a C program, you also need to build the runtime library; doing so requires the same tools as are needed to compile C programs for any particular system. The runtime library is written in C. Building the runtime library is described in Section 5. Note that, if you use the web service to compile your modules, you still need to compile the runtime library.
 
 Of course, the *a2c* package also includes many other files, such as this document, a test system, and so on.

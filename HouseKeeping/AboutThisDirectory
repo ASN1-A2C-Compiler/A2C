@@ -1,0 +1,14 @@
+The files in this directory are for housekeeping by a2c's authors. They are
+used to create all the makefiles in the system, since those makefiles need
+to have different contents depending on whether they are for .NET or Mono
+systems. Someone running a2c never needs to look at these files, but
+is welcome to, particularly if you need to change some of the makefiles
+for your environment.
+
+ProcessMakefiles.pl takes  the base-* files and creates the .NET and Mono
+versions, then pushes them out to the NET-files and Mono-files directories.
+Someone running a2c probably never needs to run this program.
+
+MakeBaseTestMakefile.pl uses dependencies.txt to generate the makefile
+for the test/ directory. This makes it easier as we change the files
+in test/.

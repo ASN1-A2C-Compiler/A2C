@@ -25,7 +25,13 @@
  * of this software, even if advised of the possibility of such damage.
  */
 
+#ifdef _MSC_VER
 #include <crtdbg.h>
+#endif
+
+#ifndef _MCS_VER
+#define __cdecl 
+#endif
 
 #include "A2C_Base.h"
 #include "A2C_Binary.h"

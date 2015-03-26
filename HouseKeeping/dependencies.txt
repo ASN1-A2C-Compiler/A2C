@@ -1,0 +1,26 @@
+2560: rfc2560.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+2986: rfc2986.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3279: rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3281: rfc3281.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3370: rfc3370.asn rfc3279.asn rfc3281.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3565: rfc3565.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3851: rfc3851.asn rfc3279.asn rfc4055.asn rfc3852.asn rfc5280.asn rfc3281.asn rfc3370.asn rfc3852a.asn pkix-common.asn  algorithm-class.asn
+3852: rfc3852.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+3852a: rfc3852a.asn rfc3279.asn rfc3281.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+4055: rfc4055.asn rfc3279.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+4108: rfc4108.asn rfc3279.asn rfc3281.asn rfc3851.asn rfc3852.asn rfc3370.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+4120: rfc4120.asn
+4210: rfc4210.asn rfc2986.asn rfc3279.asn rfc3851.asn rfc3852.asn rfc3281.asn rfc3370.asn rfc3852a.asn rfc4055.asn rfc4211.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+4211: rfc4211.asn rfc2986.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc4210.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+4556: rfc4556.asn rfc3279.asn rfc4055.asn rfc4120.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+4998: rfc4998.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+5035: rfc5035.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+5055: rfc5055.asn rfc2560.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+5083: rfc5083.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn 
+5084: rfc5084.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+5272: rfc5272.asn rfc3281.asn rfc3279.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc4211.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+5275: rfc5275.asn rfc2560.asn rfc2986.asn rfc3279.asn rfc3281.asn rfc3565.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc4210.asn rfc4211.asn rfc5055.asn rfc5280.asn rfc5272.asn pkix-common.asn algorithm-class.asn 
+5280: rfc5280.asn rfc3279.asn rfc4055.asn pkix-common.asn algorithm-class.asn
+5755: rfc5755.asn rfc3279.asn rfc3281.asn rfc3370.asn rfc3851.asn rfc3852.asn rfc3852a.asn rfc4055.asn rfc5280.asn pkix-common.asn algorithm-class.asn
+algorithm-class: algorithm-class.asn rfc3279.asn rfc4055.asn rfc5280.asn pkix-common.asn
+pkix-common: pkix-common.asn
