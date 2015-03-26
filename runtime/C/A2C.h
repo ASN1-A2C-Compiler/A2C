@@ -25,7 +25,7 @@
  * of this software, even if advised of the possibility of such damage.
  */
 
-#include <crtdbg.h>
+//#include <crtdbg.h>
 
 #include "A2C_Base.h"
 #include "A2C_Binary.h"
