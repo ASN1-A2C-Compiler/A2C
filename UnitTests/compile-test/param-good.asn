@@ -1,0 +1,19 @@
+Param1 DEFINITIONS ::= 
+BEGIN
+
+   ALGORITHM ::= TYPE-IDENTIFIER
+
+   AlgorithmIdentifier {ALGORITHM:IOSet } ::= SEQUENCE {
+        algorithm  ALGORITHM.&id({IOSet}),
+        parameters ALGORITHM.&Type({IOSet}{@algorithm}) OPTIONAL
+   }
+
+   KeyAlgorithms ALGORITHM ::= {...}
+
+   Foo ::= SEQUENCE {
+      i1 INTEGER,
+      f2 AlgorithmIdentifier{{KeyAlgorithms}}
+   }
+
+END
+

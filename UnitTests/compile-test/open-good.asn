@@ -1,0 +1,48 @@
+Open1 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+    CONTENT-TYPE ::= TYPE-IDENTIFIER
+
+    id-ct OBJECT IDENTIFIER ::= {1 2 840 113549 1 7 }
+    
+    id-data OBJECT IDENTIFIER ::= {id-ct 1 }
+
+    ct-T1 CONTENT-TYPE ::= {INTEGER IDENTIFIED BY id-data }
+
+    id-ct2 OBJECT IDENTIFIER ::= {id-ct 2 }
+
+    ct-T2 CONTENT-TYPE ::= {OCTET STRING IDENTIFIED BY id-ct2 }
+
+DirectoryString{INTEGER:maxSize} ::= CHOICE {
+        teletexString   TeletexString(SIZE (1..maxSize)),
+        printableString PrintableString(SIZE(1..maxSize)),
+        universalString UniversalString(SIZE(1..maxSize)),
+        utf8String      UTF8String(SIZE(1..maxSize)),
+        bmpString       BMPString(SIZE(1..maxSize))
+}
+
+    ct-T3 CONTENT-TYPE ::= {DirectoryString{3} IDENTIFIED BY {id-ct 3} }
+
+    ct-T4 CONTENT-TYPE ::= {PrintableString (SIZE(1..5)) IDENTIFIED BY {id-ct 4}}
+
+    ContentSet CONTENT-TYPE ::= {
+       ct-T1 | ct-T2 | ct-T3 |ct-T4 , ...
+    }
+
+    ContentInfo ::= SEQUENCE {
+        contentType     CONTENT-TYPE.&id({ContentSet}),
+        content         CONTENT-TYPE.&Type({ContentSet}{@contentType})
+    }
+
+    ContentInfo2 ::= SEQUENCE {
+        contentType     CONTENT-TYPE.&id({ContentSet}),
+        content         SET OF CONTENT-TYPE.&Type({ContentSet}{@contentType})
+    }
+
+   ContentInfo3 ::= SEQUENCE {
+       contentType      CONTENT-TYPE.&id({ContentSet}),
+       content          OCTET STRING (CONTAINING CONTENT-TYPE.&Type({ContentSet}{@contentType}))
+   }
+
+
+END

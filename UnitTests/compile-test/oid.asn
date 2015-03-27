@@ -1,0 +1,31 @@
+OIDModuleSuccess {iso member-body(2) us(840) xx(4) yy(5)} DEFINITIONS ::= 
+BEGIN
+    -- 31.4  DefinedValue in NumberForm must be non-negative integer
+    v1 INTEGER ::= 1
+    v1-1 INTEGER ::= v1
+    o4 OBJECT IDENTIFIER ::= {v1 1}
+    o4-1 OBJECT IDENTIFIER ::= {1 v1}
+    o4-2 OBJECT IDENTIFIER ::= {v1-1 1}
+
+    -- 31.5  DefinedVaue in ObjectIdentifierValue shall be of type object identifier
+    o5 OBJECT IDENTIFIER ::= {o4 3 4 5}
+    o5-1 OBJECT IDENTIFIER ::= o4
+    o5-2 OBJECT IDENTIFIER ::= {o5-1 2 3 4}
+
+    -- 31.6  DefinedValue of ObjIdComponents is a relative OID and is below an OID
+
+    -- 31.7 - Locations where NameForm can and cannot be used
+
+    o7 OBJECT IDENTIFIER ::= {iso standard 8571 pci(1) }
+    o7-1 OBJECT IDENTIFIER ::= {itu-t recommendation a }
+
+    -- 31.8 - Use of the Number in NumberForm
+
+    -- 31.9 - Use of identifier in NameAndNumberForm
+
+    -- 31.10 - Reference to X.660
+
+    -- 31.11 - Must have a number except for those specified in X.660
+
+    -- 31.12 - Use of DefinedValue in ObjectIdentifierValue
+END

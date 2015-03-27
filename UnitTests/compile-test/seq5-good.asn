@@ -1,0 +1,21 @@
+--   Seq5 
+--   1.  Choice inclusion
+--
+
+Seq5 DEFINITIONS EXPLICIT TAGS::=
+BEGIN
+
+  C1 ::= CHOICE {
+        i1 INTEGER,
+        b1 BOOLEAN
+  }
+
+  C2 ::= [1] C1
+
+  S1 ::= SEQUENCE {
+        c1  C1,
+        c2  [2] C1,
+        c3  C2
+  }
+
+END
