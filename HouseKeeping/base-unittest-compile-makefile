@@ -65,4 +65,4 @@ enum-bad: enum-bad.asn $(A2C)
 
 clean:
 NET:	del *.c *.h *.obj
-MONO:	rm /f *.c *.h *.obj
+MONO:	rm -f *.c *.h *.obj
