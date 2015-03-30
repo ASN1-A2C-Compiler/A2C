@@ -13,8 +13,6 @@ script:
 
 after_script:
   - cd UnitTests/compile-test
-  - ls
-  - make -f all
+  - make -f makefile all
   - cd ../runtime-test/C
-  - ls
-  - make -f all
+  - make -f makefile all

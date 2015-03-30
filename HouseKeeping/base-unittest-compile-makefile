@@ -12,13 +12,16 @@ COMP=..\..\tools\compare.exe
 	$(COMP) $*.c sav/$*.c
 	$(COMP) $*.h sav/$*.h
 
-all: all-good 
-
-all-good: bitstring-good.obj bool-good.obj enum-good.obj int-good.obj   \
+OBJS=bitstring-good.obj bool-good.obj enum-good.obj int-good.obj   \
 	null-good.obj oid.obj open-good.obj os-good.obj param-good.obj \
 	seq-good.obj seq2-good.obj \
 	seq3-good.obj seq4-good.obj seq5-good.obj seq6-good.obj \
 	seq-of-good.obj set-good.obj set-of-good.obj
+
+all: all-good 
+
+NET:all-good: $(OBJS)
+MONO:all-good: $(OBJS:.obj=.o)
 
 int-good.c: $(A2C)
 
@@ -65,4 +68,4 @@ enum-bad: enum-bad.asn $(A2C)
 
 clean:
 NET:	del *.c *.h *.obj
-MONO:	rm -f *.c *.h *.obj
+MONO:	rm -f *.c *.h *.o
