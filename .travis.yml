@@ -12,6 +12,7 @@ script:
   - make -f makefile all
 
 after_script:
+  - ls
   - cd UnitTests/compile-test
   - make -f all
   - cd ../runtime/C

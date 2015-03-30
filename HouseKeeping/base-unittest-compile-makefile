@@ -1,13 +1,14 @@
 NET:CFLAGS = -I..\..\runtime\c
 NET:A2C = ..\..\a2c.exe 
 MONO:CFLAGS = -I../../runtime/c
-MONO:A2C = mono ..\..\a2c.exe 
+MONO:A2C =../../a2c.exe 
+MONO:MONO=mono
 COMP=..\..\tools\compare.exe
 
 .SUFFIXES: .asn
 
 .asn.c:
-	$(A2C) -const=yes $<
+	$(MONO) $(A2C) -const=yes $<
 	$(COMP) $*.c sav/$*.c
 	$(COMP) $*.h sav/$*.h
 

@@ -62,9 +62,9 @@ mono:
 
 	@echo ""
 	@echo "Deleting current makefile for the unit test - C runtime test directory"
-	del /F ../UnitTests/runtime-test/C/makefile$(EXT)
+	rm -f ../UnitTests/runtime-test/C/makefile$(EXT)
 	@echo "Copying makefile for the main directory"
-	copy UnitTest-runtime-C-makefile-NET ../UnitTests/runtime-test/C/makefile$(EXT)
+	copy UnitTest-runtime-C-makefile-Mono ../UnitTests/runtime-test/C/makefile$(EXT)
 
 net:
 	@echo off
