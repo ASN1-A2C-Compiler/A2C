@@ -58,7 +58,7 @@ mono:
 	@echo "Deleting current makefile for the unit compile test directory"
 	rm -f ../UnitTests/compile-test/makefile$(EXT)
 	@echo "Copying makefile for the main directory"
-	cp UnitTests-compile-makefile-Mono ../UnitTests/compile-test/makefile$(EXT)
+	cp unittest-compile-makefile-Mono ../UnitTests/compile-test/makefile$(EXT)
 
 net:
 	@echo off
@@ -111,4 +111,4 @@ net:
 	@echo "Deleting current makefile for the unit compile test directory"
 	del /F ..\UnitTests\compile-test\makefile$(EXT)
 	@echo "Copying makefile for the main directory"
-	copy UnitTests-compile-makefile-Mono ..\UnitTests\compile-test\makefile$(EXT)
+	copy UnitTest-compile-makefile-NET ..\UnitTests\compile-test\makefile$(EXT)

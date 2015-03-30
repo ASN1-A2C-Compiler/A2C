@@ -16,6 +16,7 @@ runtime-c-makefile
 test-makefile
 tools-makefile
 main-makefile
+unittest-compile-makefile
 );
 
 foreach my $ThisName (@FilesToProcess) {
