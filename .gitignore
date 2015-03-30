@@ -47,3 +47,6 @@ a2c/bin
 a2c/obj
 runtime/C/Debug
 runtime/C/Release
+UnitTests/compile-test/*.c
+UnitTests/compile-test/*.h
+UnitTests/compile-test/makefile

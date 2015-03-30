@@ -1,6 +1,6 @@
-NET:CFLAGS = -I..\..\runtime\c
+NET:CFLAGS = -I..\..\runtime\C
 NET:A2C = ..\..\a2c.exe 
-MONO:CFLAGS = -I../../runtime/c
+MONO:CFLAGS = -I../../runtime/C
 MONO:A2C =../../a2c.exe 
 MONO:MONO=mono
 COMP=..\..\tools\compare.exe
