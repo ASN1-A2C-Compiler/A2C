@@ -41,3 +41,9 @@ tools/cstools-3.5/ptokens.cs
 tools/rcc/lex.cs
 tools/rcc/parser.cs
 tools/cstools-3.5/cs0tokens.cs
+HouseKeeping/*-NET
+HouseKeeping/*-Mono
+a2c/bin
+a2c/obj
+runtime/C/Debug
+runtime/C/Release

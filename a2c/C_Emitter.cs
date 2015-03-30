@@ -1249,11 +1249,11 @@
                     //  Put field name on the list
                     lst.Add(CleanupName(sym.name));
 
-                    fPtr = sym.flags.Pointer;
+                    fPtr = false; //  sym.flags.Pointer;
 
                     sz = Structure_Type(symRoot, sym.type, tab, false, fClass, lst, ref fPtr);
 
-                    sym.flags.Pointer = fPtr;
+                    // sym.flags.Pointer = fPtr;
 
                     if ((sym.GetSymbolType() == SymbolType.ValueField) ||
                         (sym.GetSymbolType() == SymbolType.ValueSetField) ||

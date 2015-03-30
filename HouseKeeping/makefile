@@ -1,5 +1,5 @@
 all:
-	@echo Must specify an option
+	@echo Must specify either 'mono' or 'net' as a target
 
 mono:
 	@echo "This batch file deletes the current makefiles and copies"
@@ -54,6 +54,12 @@ mono:
 	@echo "Copying makefile for the main directory"
 	cp main-makefile-Mono ../makefile$(EXT)
 
+	@echo ""
+	@echo "Deleting current makefile for the unit compile test directory"
+	rm -f ../UnitTests/compile-test/makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	cp UnitTests-compile-makefile-Mono ../UnitTests/compile-test/makefile$(EXT)
+
 net:
 	@echo off
 	@echo This batch file deletes the current makefiles and copies
@@ -100,3 +106,9 @@ net:
 	del /F ..\makefile
 	@echo Copying makefile for the main directory
 	copy main-makefile-NET ..\makefile
+
+	@echo ""
+	@echo "Deleting current makefile for the unit compile test directory"
+	del /F ..\UnitTests\compile-test\makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	copy UnitTests-compile-makefile-Mono ..\UnitTests\compile-test\makefile$(EXT)

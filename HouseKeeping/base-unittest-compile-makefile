@@ -1,0 +1,67 @@
+NET:CFLAGS = -I..\..\runtime\c
+NET:A2C = ..\..\a2c.exe 
+MONO:CFLAGS = -I../../runtime/c
+MONO:A2C = mono ..\..\a2c.exe 
+COMP=..\..\tools\compare.exe
+
+.SUFFIXES: .asn
+
+.asn.c:
+	$(A2C) -const=yes $<
+	$(COMP) $*.c sav/$*.c
+	$(COMP) $*.h sav/$*.h
+
+all: all-good 
+
+all-good: bitstring-good.obj bool-good.obj enum-good.obj int-good.obj   \
+	null-good.obj oid.obj open-good.obj os-good.obj param-good.obj \
+	seq-good.obj seq2-good.obj \
+	seq3-good.obj seq4-good.obj seq5-good.obj seq6-good.obj \
+	seq-of-good.obj set-good.obj set-of-good.obj
+
+int-good.c: $(A2C)
+
+enum-good.c: $(A2C)
+
+bitstring-good.obj: bitstring-good.c
+
+bitstring-good.c: bitstring-good.asn $(A2C)
+
+bool-good.c: bool-good.asn $(A2C)
+
+oid.c: $(A2C)
+
+os-good.c: os-good.asn $(A2C)
+
+null-good.c: null-good.asn $(A2C)
+
+seq-good.c: seq-good.asn $(A2C)
+
+seq2-good.c: seq2-good.asn $(A2C)
+
+seq3-good.c: seq3-good.asn $(A2C)
+
+seq4-good.c: seq4-good.asn $(A2C)
+
+seq5-good.c: seq5-good.asn $(A2C)
+
+seq6-good.c: seq6-good.asn $(A2C)
+
+seq-of-good.c: seq-of-good.asn $(A2C)
+
+set-of-good.c: set-of-good.asn $(A2C)
+
+open-good.c: open-good.asn $(A2C)
+
+param-good.c: param-good.asn $(A2C)
+
+set-good.c: set-good.asn $(A2C)
+
+all-bad: enum-bad
+
+enum-bad: enum-bad.asn $(A2C)
+	$(A2C) enum-bad.asn
+
+clean:
+NET:	del *.c *.h *.obj
+MONO:	rm /f *.c *.h *.obj
