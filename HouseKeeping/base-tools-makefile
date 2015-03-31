@@ -5,6 +5,7 @@ MONO:	@echo "Making CS_Lex"
 MONO:	cd CS_Lex; make
 MONO:	@echo "Making rcc"
 MONO:	cd rcc; make
+MONO:   cd compare; make
 NET:	@echo Making cstools-3.5
 NET:	cd cstools-3.5
 NET:	nmake
@@ -14,12 +15,16 @@ NET:	nmake
 NET:	@echo Making rcc
 NET:	cd ..\rcc
 NET:	nmake
+NET:    cd ..\compare
+NET:	nmake
+
 
 clean:
 MONO:	rm -f Tools.dll cs_lex.exe lg.exe pg.exe rcc.exe
 MONO:	cd cstools-3.5; make clean
 MONO:	cd CS_Lex; make clean
 MONO:	cd rcc; make clean
+MONO:   cd compare; make clean
 NET:	del /F Tools.dll cs_lex.exe lg.exe pg.exe rcc.exe
 NET:	cd cstools-3.5
 NET:	nmake clean

@@ -66,6 +66,12 @@ mono:
 	@echo "Copying makefile for the main directory"
 	cp UnitTest-runtime-C-makefile-Mono ../UnitTests/runtime-test/C/makefile$(EXT)
 
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	rm -f ../tools/compare/makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	cp tools-compare-makefile-Mono ../tools/compare/makefile$(EXT)
+
 net:
 	@echo off
 	@echo This batch file deletes the current makefiles and copies
@@ -124,3 +130,9 @@ net:
 	del /F ..\UnitTests\runtime-test\C\makefile$(EXT)
 	@echo "Copying makefile for the main directory"
 	copy UnitTest-runtime-C-makefile-NET ..\UnitTests\runtime-test\C\makefile$(EXT)
+
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	del /F ..\tools\compare\makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	copy tools-compare-makefile-NET ..\tools\compare\makefile$(EXT)
