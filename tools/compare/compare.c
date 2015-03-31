@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char * argv[])
 {
@@ -35,17 +37,17 @@ int main(int argc, char * argv[])
             if (feof(fpLeft)) {
                 if ((fgets(rgchRight, sizeof(rgchRight), fpRight) == NULL) &&
                     feof(fpRight)) {
-                    fprintf(stderr, "pass");
+                    fprintf(stderr, "pass\n");
                     exit(0);
                 }
             }
             
-            fprintf(stderr, "fail");
+            fprintf(stderr, "fail\n");
             exit(-1);
         }
 
         if (fgets(rgchRight, sizeof(rgchRight), fpRight) == NULL) {
-            fprintf(stderr, "fail");
+            fprintf(stderr, "fail\n");
             exit(-1);
         }
 
@@ -66,7 +68,7 @@ int main(int argc, char * argv[])
          */
 
         if (strcmp(rgchLeft, rgchRight) != 0) {
-            fprintf(stderr, "fail");
+            fprintf(stderr, "fail\n");
             exit(-1);
         }
     }

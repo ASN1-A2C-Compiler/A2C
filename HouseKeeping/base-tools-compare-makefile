@@ -3,5 +3,7 @@ NET:CFLAGS = -Zi
 all: compare.exe
 
 compare.exe: compare.c
-	$(CC) $(CFLAGS) compare.c
-	copy compare.exe ..
+NET:	$(CC) $(CFLAGS) compare.c
+MONO:	$(CC) $(CFLAGS) -o compare.exe compare.c
+NET:	copy compare.exe ..
+MONO:	cp compare.exe ..

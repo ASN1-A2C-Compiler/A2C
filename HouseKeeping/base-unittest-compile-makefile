@@ -3,7 +3,8 @@ NET:A2C = ..\..\a2c.exe
 MONO:CFLAGS = -I../../runtime/C
 MONO:A2C =../../a2c.exe 
 MONO:MONO=mono
-COMP=..\..\tools\compare.exe
+NET:COMP=..\..\tools\compare.exe
+MONO:COMP=../../tools/compare.exe
 
 .SUFFIXES: .asn
 
