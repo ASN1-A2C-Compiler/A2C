@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <a2c.h>
+#include <A2C.h>
 #include "utility.h"
 
 #define BUFFER_LENGTH   2048
