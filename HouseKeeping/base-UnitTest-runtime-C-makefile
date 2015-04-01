@@ -1,7 +1,8 @@
 NET:VERSION=\debug
 MONO:VERSION=\debug
 NET:A2C = ..\..\..\a2c.exe
-MONO:A2C = mono ..\..\..\a2c.exe
+MONO:A2C =  ..\..\..\a2c.exe
+MONO:MONO=mono
 NET:LFLAGS = -Zi /MDd /link /manifest:no
 #CFLAGS = -Zi -I..\..\..\runtime\C -Gy -nologo -W4 /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /MDd
 NET:CFLAGS = -I..\..\..\runtime\C /D_DEBUG /MDd
@@ -157,10 +158,12 @@ tag1.obj: tag1.c asn.h utility.h
 utility.obj: utility.h
 
 asn.c asn.h: asn.asn $(A2C)
-	$(A2C) asn.asn
+	$(MONO) $(A2C) asn.asn
+
+
 
 clean:
 NET:	del asn.c asn.h *.obj *.exe *.pdb *.ilk
-MONO:	del asn.c asn.h *.o *.exe
+MONO:	rm asn.c asn.h *.o *.exe
 
 
