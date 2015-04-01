@@ -1,3 +1,6 @@
+#ifdef _MSC_VER
+#include <crtdbg.h>
+#endif // _MSC_VER
 
 A2C_ERROR DecodeFromFile(PVOID * ppv, PC_A2C_DESCRIPTOR pdesc, int flags, char const * szFileName, int fDER);
 A2C_ERROR EncodeToFile(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, int flags, int fDER, char const * szFileName);

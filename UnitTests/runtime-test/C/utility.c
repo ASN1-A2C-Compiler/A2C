@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <crtdbg.h>
 #include <a2c.h>
 #include "utility.h"
 
@@ -7,11 +6,13 @@
 
 int MemoryCheck()
 {
+#ifdef _MSC_VER
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
     if (_CrtDumpMemoryLeaks()) {
         return 1;
     }
+#endif // _MSC_VER
     return 0;
 }
 

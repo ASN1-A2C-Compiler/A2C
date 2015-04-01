@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <crtdbg.h>
 #include "asn.h"
 #include "utility.h"
+
 
 /*
  *  FIrst simple test - Decode an empty SEQ OF
@@ -12,6 +12,7 @@ int Test1()
     StO1 *  psto1;
 
     Check_DecodeBER(&psto1, &StO1_descriptor, 0, "..\\data\\sto1-1.bin");
+
 
     if (psto1->count != 0) return 1;
 
