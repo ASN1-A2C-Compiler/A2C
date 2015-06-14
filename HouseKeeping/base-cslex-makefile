@@ -9,7 +9,7 @@ cs_lex.exe: $(SOURCES)
 NET:	csc /out:cs_lex.exe /debug+ /warn:0 $(SOURCES)
 NET:	del /F ..\cs_lex.exe
 NET:	copy cs_lex.exe ..\cs_lex.exe
-MONO:	gmcs -out:cs_lex.exe -debug+ -warn:0 $(SOURCES)
+MONO:	mcs -out:cs_lex.exe -debug+ -warn:0 $(SOURCES)
 MONO:	rm -f ../cs_lex.exe
 MONO:	cp cs_lex.exe ..
 

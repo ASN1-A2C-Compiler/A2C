@@ -16,15 +16,15 @@ NET:	del /F ..\pg.exe ..\lg.exe ..\Tools.dll
 NET:	copy pg.exe ..\pg.exe
 NET:	copy lg.exe ..\lg.exe
 NET:	copy Tools.dll ..\Tools.dll
-MONO:	gmcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase0.cs
-MONO:	gmcs -debug+ -warn:0 -r:Tools.dll lg.cs
+MONO:	mcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase0.cs
+MONO:	mcs -debug+ -warn:0 -r:Tools.dll lg.cs
 MONO:	mono lg.exe pg.lexer ptokens
-MONO:	gmcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
+MONO:	mcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
 MONO:	mono lg.exe cs0.lexer cs0tokens
 MONO:	mono pg.exe -Ics0tokens cs0.parser cs0syntax
-MONO:	gmcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase.cs cs0tokens.cs cs0syntax.cs
-MONO:	gmcs -debug+ -warn:0 -r:Tools.dll lg.cs
-MONO:	gmcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
+MONO:	mcs -debug+ -warn:0 -out:Tools.dll -target:library dfa.cs lexer.cs parser.cs olist.cs genbase.cs cs0tokens.cs cs0syntax.cs
+MONO:	mcs -debug+ -warn:0 -r:Tools.dll lg.cs
+MONO:	mcs -debug+ -warn:0 -r:Tools.dll pg.cs ptokens.cs
 MONO:	rm -f ../pg.exe ../lg.exe ../Tools.dll
 MONO:	cp pg.exe lg.exe Tools.dll ..
 
