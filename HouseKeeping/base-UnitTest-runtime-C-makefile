@@ -29,7 +29,7 @@ bit1: bit1.exe
 	bit1
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	cl $** $(LFLAGS)
+	$(CC) $** $(LFLAGS)
 
 bit1$(OBJ): bit1.c asn.h utility.h
 
