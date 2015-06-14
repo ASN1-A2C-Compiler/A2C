@@ -27,6 +27,7 @@ all: $(ALL_TESTS)
 
 bit1: bit1.exe
 	ls
+	bit1.exe
 	bit1
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
