@@ -32,7 +32,7 @@ bit1: bit1.exe
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
 NET:	$(CC) $** $(LFLAGS)
-MONO:	$(CC) -o $* $^
+MONO:	$(CC) -o bit1 $^
 
 bit1$(OBJ): bit1.c asn.h utility.h
 
