@@ -26,10 +26,11 @@ ALL_TESTS = $(BIT_TESTS) bool1 $(INT_TESTS) null1 $(OCTET_TESTS) $(SEQ_TESTS) $(
 all: $(ALL_TESTS)
 
 bit1: bit1.exe
-	bit1
+	bit1.exe
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
 NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 bit1$(OBJ): bit1.c asn.h utility.h
 
