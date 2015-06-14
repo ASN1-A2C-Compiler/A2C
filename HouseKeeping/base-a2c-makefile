@@ -19,7 +19,7 @@ NET:	a2c.exe -out=sanitytest ..\test\rfc5280.asn ..\test\pkix-common.asn ..\test
 NET:	del /F sanitytest.*
 NET:	@echo "Copying a2c to the distribution base"
 NET:	copy a2c.exe ..
-MONO:	gmcs -out:a2c.exe -debug+ -warn:0 $(SOURCES)
+MONO:	mcs -out:a2c.exe -debug+ -warn:0 $(SOURCES)
 MONO:	@echo "Running a sanity test to see if the new a2c.exe works"
 MONO:	mono a2c.exe -out=sanitytest ../test/rfc5280.asn ../test/pkix-common.asn ../test/algorithm-class.asn ../test/rfc4055.asn ../test/rfc3279.asn
 MONO:	rm -f sanitytest.*
