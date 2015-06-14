@@ -8,7 +8,7 @@ NET:LFLAGS = -Zi /MDd /link /manifest:no
 NET:CFLAGS = -I..\..\..\runtime\C /D_DEBUG /MDd
 MONO:CFLAGS = -I../../../runtime/C
 NET:A2C_LIB = ..\..\..\runtime\C$(VERSION)\A2C_runtime.lib
-MONO:A2C_LIB = ../../../runtime/C$(VERSION)/A2C_runtime.lib
+MONO:A2C_LIB = ../../../runtime/C$(VERSION)/A2C_runtime.a
 NET: OBJ=.obj
 MONO: OBJ=.o
 
