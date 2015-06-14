@@ -10,9 +10,9 @@ script:
   - make mono
   - cd ..
   - make -f makefile all
-
-after_script:
   - cd UnitTests/compile-test
   - make -f makefile all
+
+after_script:
   - cd ../runtime-test/C
   - make -f makefile all

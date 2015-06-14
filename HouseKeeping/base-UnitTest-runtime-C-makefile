@@ -26,6 +26,7 @@ ALL_TESTS = $(BIT_TESTS) bool1 $(INT_TESTS) null1 $(OCTET_TESTS) $(SEQ_TESTS) $(
 all: $(ALL_TESTS)
 
 bit1: bit1.exe
+	ls
 	bit1
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
@@ -38,7 +39,8 @@ bit2: bit2.exe
 	bit2
 
 bit2.exe: bit2$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 bit2$(OBJ): bit2.c utility.h
 
@@ -46,19 +48,22 @@ bmp1: bmp1.exe
 	bmp1
 
 bmp1.exe: bmp1$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $**  $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 bmp2: bmp2.exe
 	bmp2
 
 bmp2.exe: bmp2$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC)  $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 bool1: bool1.exe
 	bool1
 
 bool1.exe: bool1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 bool1$(OBJ): bool1.c asn.h utility.h
 
@@ -66,7 +71,8 @@ int1: int1.exe
 	int1
 
 int1.exe: int1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 int1$(OBJ): int1.c asn.h utility.h
 
@@ -74,7 +80,8 @@ int2: int2.exe
 	int2
 
 int2.exe: int2$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 int2$(OBJ): int2.c utility.h
 
@@ -82,7 +89,8 @@ null1: null1.exe
 	null1
 
 null1.exe: null1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 null1$(OBJ): null1.c asn.h utility.h
 
@@ -90,7 +98,8 @@ os1: os1.exe
 	os1
 
 os1.exe: os1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 os1$(OBJ): os1.c asn.h utility.h
 
@@ -98,7 +107,8 @@ os2: os2.exe
 	os2
 
 os2.exe: os2$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 os2$(OBJ): os2.c utility.h
 
@@ -106,7 +116,8 @@ seq1: seq1.exe
 	seq1
 
 seq1.exe: seq1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 seq1$(OBJ): seq1.c asn.h utility.h
 
@@ -114,7 +125,8 @@ seq2: seq2.exe
 	seq2
 
 seq2.exe: seq2$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 seq2$(OBJ): seq2.c asn.h utility.h
 
@@ -122,7 +134,8 @@ seqof1: seqof1.exe
 	seqof1
 
 seqof1.exe: seqof1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 seqof1$(OBJ): seqof1.c asn.h utility.h
 
@@ -130,7 +143,8 @@ set1: set1.exe
 	set1
 
 set1.exe: set1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 set1$(OBJ): set1.c asn.h utility.h
 
@@ -138,7 +152,8 @@ set2: set2.exe
 	set2
 
 set2.exe: set2$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 set2$(OBJ): set2.c asn.h utility.h
 
@@ -146,7 +161,8 @@ setof1: setof1.exe
 	setof1
 
 setof1.exe: setof1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 setof1$(OBJ): setof1.c asn.h utility.h
 
@@ -154,7 +170,8 @@ tag1: tag1.exe
 	tag1
 
 tag1.exe: tag1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
-	$(CC) $** $(LFLAGS)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o $@ $^
 
 tag1$(OBJ): tag1.c asn.h utility.h
 
