@@ -1,5 +1,5 @@
 NET:VERSION=\debug
-MONO:VERSION=/debug
+MONO:VERSION=
 NET:A2C = ..\..\..\a2c.exe
 MONO:A2C =  ../../../a2c.exe
 MONO:MONO=mono
