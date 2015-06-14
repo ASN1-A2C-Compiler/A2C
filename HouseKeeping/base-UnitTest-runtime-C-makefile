@@ -27,12 +27,12 @@ all: $(ALL_TESTS)
 
 bit1: bit1.exe
 	ls
-	bit1.exe
-	bit1
+	-bit1.exe
+	-bit1
 
 bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
 NET:	$(CC) $** $(LFLAGS)
-MONO:	$(CC) -o $@ $^
+MONO:	$(CC) -o $* $^
 
 bit1$(OBJ): bit1.c asn.h utility.h
 
@@ -41,7 +41,7 @@ bit2: bit2.exe
 
 bit2.exe: bit2$(OBJ) utility$(OBJ) $(A2C_LIB)
 NET:	$(CC) $** $(LFLAGS)
-MONO:	$(CC) -o $@ $^
+MONO:	$(CC) -o $* $^
 
 bit2$(OBJ): bit2.c utility.h
 
