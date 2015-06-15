@@ -12,7 +12,7 @@ MONO:A2C_LIB = ../../../runtime/C$(VERSION)/A2C_Runtime.a
 NET:OBJ=.obj
 MONO:OBJ=.o
 NET:DOT_SLASH=
-MONO:DOT_SLASH=
+MONO:DOT_SLASH=./
 
 BIT_TESTS = bit1 bit2
 INT_TESTS = int1 int2
