@@ -11,7 +11,7 @@ int Test1()
     int                 i;
     Os1 *  pos = NULL;
     
-    Check_DecodeBER(&pos, &Os1_descriptor, 0, "..\\data\\os1-1.bin");
+    Check_DecodeBER(&pos, &Os1_descriptor, 0, DATA_DIR "os1-1.bin");
 
     if (pos->length != 17) return 1;
     for (i=0; i<17; i++) {
@@ -32,7 +32,7 @@ int Test2()
     int                 i;
     Os1 *  pos = NULL;
     
-    Check_DecodeBER_By1(&pos, &Os1_descriptor, 0, "..\\data\\os1-1.bin");
+    Check_DecodeBER_By1(&pos, &Os1_descriptor, 0, DATA_DIR "os1-1.bin");
 
     if (pos->length != 17) return 1;
     for (i=0; i<17; i++) {
@@ -52,7 +52,7 @@ int Test3()
 {
     Os1    os = {0};
     
-    if (EncodeCompareToFile(&os, &Os1_descriptor, 0, 1, "..\\data\\os1-2.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&os, &Os1_descriptor, 0, 1, DATA_DIR "os1-2.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -61,7 +61,7 @@ int Test4()
 {
     Os2 *       pos2 = NULL;
 
-    Check_DecodeBER(&pos2, &Os2_descriptor, 0, "..\\data\\os1-3.bin");
+    Check_DecodeBER(&pos2, &Os2_descriptor, 0, DATA_DIR "os1-3.bin");
 
     A2C_Free_Os2(pos2);
 

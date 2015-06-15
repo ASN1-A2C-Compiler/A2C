@@ -43,7 +43,7 @@ int Test2()
 
     bs.bitLength = 20;
 
-    err = ValidateCompareToFile(&bs, &A2C_BIT_STRING_descriptor, "../data/bit2-1.bin");
+    err = ValidateCompareToFile(&bs, &A2C_BIT_STRING_descriptor, DATA_DIR "bit2-1.bin");
     if (err != A2C_ERROR_Success) return 1;
 
     /*

@@ -12,7 +12,7 @@ int Test1()
     Tag1          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag1_descriptor, 0, "..\\data\\tag1-1.bin");
+    Check_DecodeBER(&pvs, &Tag1_descriptor, 0, DATA_DIR "tag1-1.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -20,7 +20,7 @@ int Test1()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag1_descriptor, 0, 1, "..\\data\\tag1-1.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag1_descriptor, 0, 1, DATA_DIR "tag1-1.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -35,7 +35,7 @@ int Test2()
     Tag2          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag2_descriptor, 0, "..\\data\\tag1-2.bin");
+    Check_DecodeBER(&pvs, &Tag2_descriptor, 0, DATA_DIR "tag1-2.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -43,7 +43,7 @@ int Test2()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag2_descriptor, 0, 1, "..\\data\\tag1-2.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag2_descriptor, 0, 1, DATA_DIR "tag1-2.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -58,7 +58,7 @@ int Test3()
     Tag3          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag3_descriptor, 0, "..\\data\\tag1-3.bin");
+    Check_DecodeBER(&pvs, &Tag3_descriptor, 0, DATA_DIR "tag1-3.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -66,7 +66,7 @@ int Test3()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag3_descriptor, 0, 1, "..\\data\\tag1-3.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag3_descriptor, 0, 1, DATA_DIR "tag1-3.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -81,7 +81,7 @@ int Test4()
     Tag4          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag4_descriptor, 0, "..\\data\\tag1-4.bin");
+    Check_DecodeBER(&pvs, &Tag4_descriptor, 0, DATA_DIR "tag1-4.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -89,7 +89,7 @@ int Test4()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag4_descriptor, 0, 1, "..\\data\\tag1-4.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag4_descriptor, 0, 1, DATA_DIR "tag1-4.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -104,7 +104,7 @@ int Test5()
     Tag5          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag5_descriptor, 0, "..\\data\\tag1-5.bin");
+    Check_DecodeBER(&pvs, &Tag5_descriptor, 0, DATA_DIR "tag1-5.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -112,7 +112,7 @@ int Test5()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag5_descriptor, 0, 1, "..\\data\\tag1-5.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag5_descriptor, 0, 1, DATA_DIR "tag1-5.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -127,7 +127,7 @@ int Test6()
     Tag6          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag6_descriptor, 0, "..\\data\\tag1-6.bin");
+    Check_DecodeBER(&pvs, &Tag6_descriptor, 0, DATA_DIR "tag1-6.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -135,7 +135,7 @@ int Test6()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag6_descriptor, 0, 1, "..\\data\\tag1-6.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag6_descriptor, 0, 1, DATA_DIR "tag1-6.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -150,7 +150,7 @@ int Test7()
     Tag7          vs;
     
     
-    Check_DecodeBER(&pvs, &Tag7_descriptor, 0, "..\\data\\tag1-7.bin");
+    Check_DecodeBER(&pvs, &Tag7_descriptor, 0, DATA_DIR "tag1-7.bin");
 
     if (strcmp(pvs->string, "Jones") != 0) return 1;
 
@@ -158,7 +158,7 @@ int Test7()
 
     vs.string = "Jones";
     
-    if (EncodeCompareToFile(&vs, &Tag7_descriptor, 0, 1, "..\\data\\tag1-7.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&vs, &Tag7_descriptor, 0, 1, DATA_DIR "tag1-7.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }

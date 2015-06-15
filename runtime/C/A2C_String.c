@@ -211,7 +211,7 @@ A2C_ERROR A2C_string_init(PVOID pv, PC_A2C_DESCRIPTOR pdesc)
 
 #ifndef NO_INIT
     ps->string = &Zero;
-#endif // NO_INIT
+#endif
 
     return A2C_ERROR_Success;
 }
@@ -1801,7 +1801,7 @@ A2C_ERROR A2C_NUMERIC_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CO
                 
                 A2C_SetContextNum(pcxt, iFrame, -1);
 
-                snprintf(rgch, sizeof(rgch), "Invalid character %s", *sz);
+                snprintf(rgch, sizeof(rgch), "Invalid character %c", *sz);
                 return A2C_Validate_Print(pdesc, pcxt, "NumericString", rgch, pstm);
             }
         }
@@ -3624,7 +3624,7 @@ A2C_ERROR A2C_VISIBLE_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CO
                 
                 A2C_SetContextNum(pcxt, iFrame, -1);
 
-                snprintf(rgch, sizeof(rgch), "Invalid character %s", *sz);
+                snprintf(rgch, sizeof(rgch), "Invalid character %c", *sz);
                 return A2C_Validate_Print(pdesc, pcxt, "VisibleString", rgch, pstm);
             }
         }

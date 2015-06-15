@@ -10,7 +10,7 @@ int Test1()
 {
     B2 * pbs;
     
-    Check_DecodeBER(&pbs, &B2_descriptor, 0, "..\\data\\bit1-1.bin");
+    Check_DecodeBER(&pbs, &B2_descriptor, 0, DATA_DIR "bit1-1.bin");
 
     if (pbs->bitLength != 10) return 1;
     if (pbs->bufferLength != 2) return 1;
@@ -20,7 +20,7 @@ int Test1()
     A2C_Free_B2(pbs);
 
 
-    Check_DecodeBER(&pbs, &B3_descriptor, 0, "..\\data\\bit1-2.bin");
+    Check_DecodeBER(&pbs, &B3_descriptor, 0, DATA_DIR "bit1-2.bin");
 
     if (pbs->bitLength != 9) return 1;
     if (pbs->bufferLength != 2) return 1;
@@ -45,7 +45,7 @@ int Test2()
      *  Encode 0 bits
      */
 
-    if (EncodeCompareToFile(&bs, &B2_descriptor, 0, 1, "..\\data\\bit1-4.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&bs, &B2_descriptor, 0, 1, DATA_DIR "bit1-4.bin") != A2C_ERROR_Success) return 1;
 
     /*
      *  Check for triming on DER encoding
@@ -55,9 +55,9 @@ int Test2()
     bs.bufferLength = 2;
     bs.data = rgb;
 
-    if (EncodeCompareToFile(&bs, &B2_descriptor, 0, 1, "..\\data\\bit1-1.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&bs, &B2_descriptor, 0, 1, DATA_DIR "bit1-1.bin") != A2C_ERROR_Success) return 1;
 
-    if (EncodeCompareToFile(&bs, &B3_descriptor, 0, 1, "..\\data\\bit1-2.bin") != A2C_ERROR_Success) return 1;
+    if (EncodeCompareToFile(&bs, &B3_descriptor, 0, 1, DATA_DIR "bit1-2.bin") != A2C_ERROR_Success) return 1;
 
     return 0;
 }
@@ -70,7 +70,7 @@ int Test3()
 {
     B2 * pbs;
 
-    Check_DecodeBER(&pbs, &B2_descriptor, 0, "..\\data\\bit1-3.bin");
+    Check_DecodeBER(&pbs, &B2_descriptor, 0, DATA_DIR "bit1-3.bin");
 
     if (pbs->bitLength != 44) return 1;
     if (pbs->bufferLength != 6) return 1;
@@ -90,7 +90,7 @@ int Test4()
 {
     B1 *        pb1 = NULL;
 
-    Check_DecodeBER(&pb1, &B1_descriptor, 0, "..\\data\\bit1-5.bin");
+    Check_DecodeBER(&pb1, &B1_descriptor, 0, DATA_DIR "bit1-5.bin");
 
     if (pb1->b1.bitLength != 1) return 1;
     if (pb1->b1.bufferLength != 1) return 1;

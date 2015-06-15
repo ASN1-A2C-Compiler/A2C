@@ -27,7 +27,7 @@ int Test1()
 
     os.length = 10;
 
-    err = ValidateCompareToFile(&os, &A2C_OCTET_STRING_descriptor, "../data/os2-1.bin");
+    err = ValidateCompareToFile(&os, &A2C_OCTET_STRING_descriptor, DATA_DIR "os2-1.bin");
     if (err != A2C_ERROR_Success) return 1;
 
 

@@ -2,6 +2,12 @@
 #include <crtdbg.h>
 #endif // _MSC_VER
 
+#ifdef _MSC_VER
+#define DATA_DIR "..\\data\\"
+#else
+#define DATA_DIR "../data/"
+#endif
+
 A2C_ERROR DecodeFromFile(PVOID * ppv, PC_A2C_DESCRIPTOR pdesc, int flags, char const * szFileName, int fDER);
 A2C_ERROR EncodeToFile(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, int flags, int fDER, char const * szFileName);
 A2C_ERROR EncodeCompareToFile(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, int flags, int fDER, char const * szFileName);

@@ -34,7 +34,7 @@ int Test2()
      *  Should succeed - no
      */
     
-    err = ValidateCompareToFile(&i, &A2C_INTEGER_HUGE_descriptor, "../data/int2-1.bin");
+    err = ValidateCompareToFile(&i, &A2C_INTEGER_HUGE_descriptor, DATA_DIR "int2-1.bin");
     if (err != A2C_ERROR_Success) return 1;
 
     /*
@@ -43,7 +43,7 @@ int Test2()
 
     i.hLength = 10;
 
-    err = ValidateCompareToFile(&i, &A2C_INTEGER_HUGE_descriptor, "../data/int2-2.bin");
+    err = ValidateCompareToFile(&i, &A2C_INTEGER_HUGE_descriptor, DATA_DIR "int2-2.bin");
     if (err != A2C_ERROR_Success) return 1;
 
     /*

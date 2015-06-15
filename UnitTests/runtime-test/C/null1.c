@@ -10,7 +10,7 @@ int Test1()
 {
     N1 * pf;
     
-    Check_DecodeBER(&pf, &N1_descriptor, 0, "..\\data\\null1-1.bin");
+    Check_DecodeBER(&pf, &N1_descriptor, 0, DATA_DIR "null1-1.bin");
 
     A2C_Free_N1(pf);
 
@@ -27,11 +27,11 @@ int Test2()
 
     // Encode as BER
 
-    Check_EncodeBER(&f, &N1_descriptor, 0, "..\\data\\null1-1.bin");
+    Check_EncodeBER(&f, &N1_descriptor, 0, DATA_DIR "null1-1.bin");
 
     //  Encode as DER
 
-    Check_EncodeDER(&f, &N1_descriptor, 0, "..\\data\\null1-1.bin");
+    Check_EncodeDER(&f, &N1_descriptor, 0, DATA_DIR "null1-1.bin");
 
     return 0;
 }
@@ -40,7 +40,7 @@ int Test3()
 {
     N2* pn2 = NULL;
 
-    Check_DecodeBER(&pn2, &N2_descriptor, 0, "..\\data\\null1-2.bin");
+    Check_DecodeBER(&pn2, &N2_descriptor, 0, DATA_DIR "null1-2.bin");
 
     A2C_Free_N2(pn2);
 

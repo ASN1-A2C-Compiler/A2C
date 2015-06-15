@@ -145,7 +145,7 @@ A2C_ERROR A2C_INTEGER_HUGE_init(PVOID pv, PC_A2C_DESCRIPTOR pdesc)
 #ifndef NO_INIT
     pi->hData = calloc(0, 1);
     if (pi->hData != NULL) pi->hLength = 1;
-#endif  // !NO_INIT
+#endif 
     
     return A2C_ERROR_Success;
 }

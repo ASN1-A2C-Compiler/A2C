@@ -17,12 +17,12 @@ NET:	cd ..\runtime\C
 NET:	nmake
 
 clean:
-	cd tools
-	$(MAKE) clean
+NET:	cd tools
+NET:	$(MAKE) clean
+MONO:	cd tools; $(MAKE) clean
 NET:	cd ..\a2c
-MONO:	cd ../a2c
-	$(MAKE) clean
+NET:	$(MAKE) clean
+MONO:	cd a2c; $(MAKE) clean
 NET:	cd ..\runtime\C
-MONO:	cd ../runtime/C
-	$(MAKE) clean
-
+NET:	$(MAKE) clean
+MONO:	cd runtime/C; $(MAKE) clean
