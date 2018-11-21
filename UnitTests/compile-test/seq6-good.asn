@@ -1,0 +1,16 @@
+--  Seq6
+--    1. Deal with defaults for integers and enums
+
+Seq6  DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+   S1 ::= SEQUENCE {
+      f1 E1 DEFAULT v1,
+      f2 I1 DEFAULT v1
+   }
+
+   E1 ::= ENUMERATED { v1 (1) }
+
+   I1 ::= INTEGER { v1 (2) }
+
+END

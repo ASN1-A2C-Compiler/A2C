@@ -1,0 +1,39 @@
+Enum1 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+a INTEGER ::= 5
+
+T1 ::= ENUMERATED { a(2) }
+
+T2 ::= ENUMERATED { a(3), b(a) }
+
+c T2 ::= b
+
+d T2 ::= a
+
+T3 ::= ENUMERATED { a(-1), b(0), c(1) }
+
+T4 ::= ENUMERATED { a, b, c, d, e, f }
+
+T8 ::= ENUMERATED { a, b, ... }
+
+T5 ::= ENUMERATED { a(1), b(2), ... !2 }
+
+T6 ::= ENUMERATED { a(1), b(2), ... !2, c(3), d(4) }
+
+T7 ::= ENUMERATED { a(1), b(2), ..., c(3), d(4) }
+
+C ::= ENUMERATED { a, b(3), ..., c(1) }
+
+D ::= ENUMERATED { a, b, ..., c(2) }
+
+A1 ::= ENUMERATED { a, b,..., c} -- c = 2
+
+B1 ::= ENUMERATED { a, b, c(0), ..., d} -- d = 3
+
+C1 ::= ENUMERATED { a, b, ..., c(3), d } -- d = 4
+
+D1 ::= ENUMERATED { a, z(25), ..., d } -- d = 1
+
+
+END

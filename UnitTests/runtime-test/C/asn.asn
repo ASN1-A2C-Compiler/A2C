@@ -1,0 +1,177 @@
+Asn1 DEFINITIONS EXPLICIT TAGS  ::=
+BEGIN
+   -- bit1
+
+   B2 ::= BIT STRING
+
+   B3 ::= BIT STRING { b1(1), b2(2) }
+
+   B1 ::= SEQUENCE {
+        b1 BIT STRING,
+        b2 B2,
+        b3 B3,
+        b4 BIT STRING { b1(1), b2(2) }
+   }
+
+   -- bool1
+
+   Bo1 ::= BOOLEAN
+
+   Bo2 ::= SEQUENCE {
+        b1 BOOLEAN,
+        b2 Bo1
+   }
+
+   -- Int1
+
+   I1 ::= INTEGER
+
+   I2 ::= INTEGER
+--# HugeInteger: I2 #--
+
+   S1 ::= SEQUENCE {
+        i1 INTEGER,
+        i2 INTEGER,
+        i3 INTEGER,
+        i4 INTEGER
+    }
+
+    I4 ::= SEQUENCE {
+        i1 I2,
+        i2 I2,
+        i3 I2,
+        i4 I2
+    }
+
+    -- null1
+
+    N1 ::= NULL
+
+    N2 ::= SEQUENCE {
+        n1 N1,
+        n2 NULL
+    }
+
+    -- os1
+
+    Os1 ::= OCTET STRING
+
+    Os2 ::= SEQUENCE {
+        os1  Os1,
+        os2  OCTET STRING
+    }
+
+    -- Seq1
+
+    SQ1 ::= SEQUENCE { }
+
+    SQ2 ::= SEQUENCE { i1 INTEGER, i2 INTEGER, i3 INTEGER }
+
+    SQ3 ::= SEQUENCE { i1 [1] INTEGER OPTIONAL, i2 [2] INTEGER OPTIONAL, i3 [3] INTEGER OPTIONAL }
+
+    SQ4 ::= SEQUENCE { i1 [1] INTEGER DEFAULT 21, i2 [2] INTEGER DEFAULT 22, i3 [3] INTEGER DEFAULT 23 }
+
+    SQ5 ::= SEQUENCE {
+                f1                      Tag1,   -- [U 1A]                          T
+                f2      [1] EXPLICIT    Tag1,   -- [C  1] [U 1A]                  ET
+                f3      [2] IMPLICIT    Tag1,   -- [C  2]                         IT
+                f4      [1] EXPLICIT    Tag2,   -- [C  1] [A  3]                 EIT
+                f5      [2] IMPLICIT    Tag2,   -- [C  2]                        IIT
+                f6      [1] EXPLICIT    Tag6,   -- [C  1] [C  9] [U 1A]          EET
+                f7      [2] IMPLICIT    Tag6    -- [C  2] [U 1A]                 IET
+    }
+
+    -- Seq2
+
+    SQ2-1 ::= SEQUENCE {
+        i1 INTEGER,
+        i2 INTEGER OPTIONAL,
+        i3 [5] IMPLICIT INTEGER DEFAULT 5
+    }
+
+    --# Pointer: SQ2-1.i1 #--
+    --# Pointer: SQ2-1.i2 #--
+    --# Pointer: SQ2-1.i3 #--
+
+    SQ2-2 ::= SEQUENCE {
+        i1 [5] INTEGER
+    }
+    --# Pointer: SQ2-2.i1 #--
+
+    -- SeqOf1
+
+    SO1 ::= SEQUENCE OF INTEGER
+
+    SO2 ::= SEQUENCE OF SEQUENCE {
+        i1 INTEGER,
+        o2 OCTET STRING
+    }
+
+    SO3 ::= SEQUENCE OF SO1
+
+    -- Set1
+
+    ST1 ::= SET { }
+
+    ST2 ::= SET { i1 INTEGER, i2 INTEGER, i3 INTEGER }
+
+    ST3 ::= SET { i1 [1] INTEGER OPTIONAL, i2 [2] INTEGER OPTIONAL, i3 [3] INTEGER OPTIONAL }
+
+    ST4 ::= SET { i1 [1] INTEGER DEFAULT 21, i2 [2] INTEGER DEFAULT 22, i3 [3] INTEGER DEFAULT 23 }
+
+    ST5 ::= SET {
+            f1                      Tag1,   -- [U 1A]                          T
+            f2      [5] EXPLICIT    Tag1,   -- [C  5] [U 1A]                  ET
+            f3      [6] IMPLICIT    Tag1,   -- [C  6]                         IT
+            f4      [3] EXPLICIT    Tag2,   -- [C  3] [A  3]                 EIT
+            f5      [4] IMPLICIT    Tag2,   -- [C  4]                        IIT
+            f6      [1] EXPLICIT    Tag6,   -- [C  1] [C  9] [U 1A]          EET
+            f7      [2] IMPLICIT    Tag6    -- [C  2] [U 1A]                 IET
+    }
+
+    -- Seq2
+
+    ST2-1 ::= SET {
+        i1 INTEGER,
+        i2 INTEGER OPTIONAL,
+        i3 [5] IMPLICIT INTEGER DEFAULT 5
+    }
+
+    --# Pointer: ST2-1.i1 #--
+    --# Pointer: ST2-1.i2 #--
+    --# Pointer: ST2-1.i3 #--
+
+    ST2-2 ::= SET {
+        i1 [5] INTEGER
+    }
+    --# Pointer: ST2-2.i1 #--
+
+    -- SetOf1
+
+    StO1 ::= SET OF INTEGER
+
+    StO2 ::= SET OF SEQUENCE {
+        i1 INTEGER,
+        o2 OCTET STRING
+    }
+
+    StO3 ::= SET OF StO1
+
+    -- Tag1
+
+--                           FIRST
+-- second           NONE    IMPLICIT [6]    EXPLICIT [7]
+-- UNIVERSAL [0]    [0](1)  [6](2)          [7][0]
+-- IMPLICIT  [1]     N/A    [1](5)          [1][0] (4)
+-- EXPLICIT  [2]     N/A    [2][6] (3)      [2][7][0]
+
+
+    Tag1 ::= VisibleString                      -- [U 1A]                          T
+    Tag2 ::= [APPLICATION 3] IMPLICIT Tag1      -- [A 03]                         IT      
+    Tag3 ::= [2] Tag2                           -- [C 02] [A 03]                 EIT
+    Tag4 ::= [APPLICATION 7] IMPLICIT Tag3      -- [A 7] [A 3]                   IEIT
+    Tag5 ::= [2] IMPLICIT Tag2                  -- [C 2]                         IIT
+    Tag6 ::= [9] Tag1                           -- [C 9] [U 1A]                   ET
+    Tag7 ::= [8] Tag3                           -- [C 8] [C 2] [A 3]             EET
+
+END

@@ -1275,7 +1275,7 @@ A2C_ERROR A2C_OPEN_BIT_STRING_copy(A2C_OPEN_BIT_STRING * pobsLeft, A2C_OPEN_BIT_
 /// <returns>A2C_ERROR code</returns>
 --- */
 
-A2C_ERROR A2C_OPEN_BIT_STRING_validate(A2C_OPEN_BIT_STRING const * pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
+A2C_ERROR A2C_OPEN_BIT_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
 {
     unreferenced(pv);
     unreferenced(pdesc);

@@ -1,0 +1,8 @@
+Null1 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+I1 ::= NULL
+
+i1 I1 ::= NULL
+
+END

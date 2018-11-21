@@ -1,0 +1,76 @@
+--  Test case covers:
+--  1.  Basic structure emission
+--  2.  Nested structure emission
+--  3.  Initialization of these structures
+--  4.  OPTIONAL and DEFAULT keywords on elements
+
+Seq1 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+S1 ::= SEQUENCE {
+    i1 INTEGER,
+    i2 INTEGER
+}
+
+a S1 ::= {i1 5, i2 7}
+b S1 ::= {i2 10, i1 1}
+
+S2 ::= SEQUENCE {
+     i1 INTEGER,
+     s1 SEQUENCE {
+       i1 INTEGER,
+       i2 INTEGER
+    }
+}
+
+c S2 ::= {i1 1, s1 {i1 11, i2 12 }}
+
+S3 ::= SEQUENCE {
+    i1 INTEGER,
+    s1 S1
+}
+
+d S3 ::= {i1 1, s1 a}
+
+e S3 ::= {i1 1, s1 {i1 11, i2 12 } }
+
+
+S4 ::= SEQUENCE {
+     i1 INTEGER,
+     i2 INTEGER OPTIONAL,
+     b1 BOOLEAN
+}
+
+f S4 ::= {i1 1, i2 2, b1 TRUE }
+
+g S4 ::= {i1 1, b1 FALSE }
+
+S5 ::= SEQUENCE {
+    i1 INTEGER,
+    i2 INTEGER DEFAULT 3,
+    b1 BOOLEAN
+}
+
+i S5 ::= {i1 1, i2 2, b1 TRUE }
+
+j S5 ::= {i1 1, i2 3, b1 FALSE }
+
+k S5 ::= {i1 1, b1 TRUE }
+
+S6 ::= SEQUENCE {
+        i1 INTEGER OPTIONAL,
+        s5 S5 OPTIONAL,
+        b1 BOOLEAN OPTIONAL
+}
+
+S7 ::= SEQUENCE {
+        i1 INTEGER DEFAULT 5,
+        s1 S1 DEFAULT { i1 1, i2 2 }
+}
+
+S8 ::= SEQUENCE {
+        i1 INTEGER DEFAULT 5,
+        s1 S1 DEFAULT a
+}
+
+END

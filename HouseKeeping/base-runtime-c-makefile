@@ -10,10 +10,12 @@ A2C_OBJS = $(OBJDIR)A2C_Base.o $(OBJDIR)A2C_Binary.o $(OBJDIR)A2C_BitString.o $(
 NET:A2C_OBJS=$(A2C_OBJS:.o=.obj)
 NET:CFLAGS = /Zi /W4 /D_CRT_SECURE_NO_WARNINGS /Gy /nologo /wd4996 $(CFLAGS_DEBUG)
 MONO:CFLAGS = -pedantic
+NET:LIB=lib
+MONO:LIB=a
 
-$(OBJDIR)A2C_Runtime.lib: $(A2C_OBJS)
-NET:	lib /out:$(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
-MONO:	ar -s -r $(OBJDIR)A2C_Runtime.lib $(A2C_OBJS)
+$(OBJDIR)A2C_Runtime.$(LIB): $(A2C_OBJS)
+NET:	lib /out:$(OBJDIR)A2C_Runtime.$(LIB) $(A2C_OBJS)
+MONO:	ar -s -r $(OBJDIR)A2C_Runtime.$(LIB) $(A2C_OBJS)
 
 rel:
 	-mkdir release
@@ -56,5 +58,5 @@ A2C_Boolean.h: A2C_Base.h
 A2C_Time.h: A2C_Base.h A2C_String.h
 
 clean:
-NET:	del /F *.o *.obj *.lib
-MONO:	rm -f *.o *.obj *.lib
+NET:	del /F *.o *.obj *.$(LIB)
+MONO:	rm -f *.o *.obj *.$(LIB)

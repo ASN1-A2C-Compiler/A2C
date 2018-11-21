@@ -1,0 +1,29 @@
+--  Test case covers
+--   1.  Basic Sequence-of syntax
+--   2.  Basic constraints for sequence-of syntax
+--   3.  Value definition for sequence-of
+
+SeqOf1 DEFINITIONS ::=
+BEGIN
+
+S1 ::= SEQUENCE OF INTEGER
+
+S2 ::= SEQUENCE OF i1 INTEGER
+
+S3 ::= SEQUENCE { i1 INTEGER, i2 INTEGER }
+
+S4 ::= SEQUENCE OF S3
+
+S5 ::= SEQUENCE OF s3 S3
+
+v1 S1 ::= { }
+
+v2 S1 ::= { 1, 2 }
+
+v3 S2 ::= { i1 1, i1 2 }
+
+v4 S4 ::= { {i1 1, i2 1}, {i1 4, i2 5}, {i1 10, i2 11} }
+
+v5 S5 ::= { s3 {i1 1, i2 1}, s3 {i1 4, i2 5}, s3 {i1 10, i2 11} }
+
+END

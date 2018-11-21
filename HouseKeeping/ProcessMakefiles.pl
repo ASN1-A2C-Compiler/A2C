@@ -15,7 +15,10 @@ cslex-makefile
 runtime-c-makefile
 test-makefile
 tools-makefile
+tools-compare-makefile
 main-makefile
+unittest-compile-makefile
+UnitTest-runtime-C-makefile
 );
 
 foreach my $ThisName (@FilesToProcess) {

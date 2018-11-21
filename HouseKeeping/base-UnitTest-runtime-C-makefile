@@ -1,0 +1,189 @@
+NET:VERSION=\debug
+MONO:VERSION=
+NET:A2C = ..\..\..\a2c.exe
+MONO:A2C =  ../../../a2c.exe
+MONO:MONO=mono
+NET:LFLAGS = -Zi /MDd /link /manifest:no
+#CFLAGS = -Zi -I..\..\..\runtime\C -Gy -nologo -W4 /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /MDd
+NET:CFLAGS = -I..\..\..\runtime\C /D_DEBUG /MDd
+MONO:CFLAGS = -I../../../runtime/C
+NET:A2C_LIB = ..\..\..\runtime\C$(VERSION)\A2C_Runtime.lib
+MONO:A2C_LIB = ../../../runtime/C$(VERSION)/A2C_Runtime.a
+NET:OBJ=.obj
+MONO:OBJ=.o
+NET:DOT_SLASH=
+MONO:DOT_SLASH=./
+
+BIT_TESTS = bit1 bit2
+INT_TESTS = int1 int2
+OCTET_TESTS = os1 os2
+bSEQ_TESTS = seq1 seq2 seqof1
+SET_TESTS = set1 set2 setof1
+STRING_TESTS = bmp1 bmp2
+TAG_TESTS = tag1
+
+ALL_TESTS = $(BIT_TESTS) bool1 $(INT_TESTS) null1 $(OCTET_TESTS) $(SEQ_TESTS) $(SET_TESTS) $(TAG_TESTS)
+
+
+all: $(ALL_TESTS)
+
+bit1: bit1.exe
+	$(DOT_SLASH)bit1
+
+bit1.exe: bit1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o bit1 $^
+
+bit1$(OBJ): bit1.c asn.h utility.h
+
+bit2: bit2.exe
+	$(DOT_SLASH)bit2
+
+bit2.exe: bit2$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o bit2 $^
+
+bit2$(OBJ): bit2.c utility.h
+
+bmp1: bmp1.exe
+	$(DOT_SLASH)bmp1
+
+bmp1.exe: bmp1$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o bmp1 $^
+
+bmp2: bmp2.exe
+	$(DOT_SLASH)bmp2
+
+bmp2.exe: bmp2$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o bmp2 $^
+
+bool1: bool1.exe
+	$(DOT_SLASH)bool1
+
+bool1.exe: bool1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o bool1 $^
+
+bool1$(OBJ): bool1.c asn.h utility.h
+
+int1: int1.exe
+	$(DOT_SLASH)int1
+
+int1.exe: int1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o int1 $^
+
+int1$(OBJ): int1.c asn.h utility.h
+
+int2: int2.exe
+	$(DOT_SLASH)int2
+
+int2.exe: int2$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o int2 $^
+
+int2$(OBJ): int2.c utility.h
+
+null1: null1.exe
+	$(DOT_SLASH)null1
+
+null1.exe: null1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o null1 $^
+
+null1$(OBJ): null1.c asn.h utility.h
+
+os1: os1.exe
+	$(DOT_SLASH)os1
+
+os1.exe: os1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o os1 $^
+
+os1$(OBJ): os1.c asn.h utility.h
+
+os2: os2.exe
+	$(DOT_SLASH)os2
+
+os2.exe: os2$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o os2 $^
+
+os2$(OBJ): os2.c utility.h
+
+seq1: seq1.exe
+	$(DOT_SLASH)seq1
+
+seq1.exe: seq1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o seq1 $^
+
+seq1$(OBJ): seq1.c asn.h utility.h
+
+seq2: seq2.exe
+	$(DOT_SLASH)seq2
+
+seq2.exe: seq2$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o seq2 $^
+
+seq2$(OBJ): seq2.c asn.h utility.h
+
+seqof1: seqof1.exe
+	$(DOT_SLASH)seqof1
+
+seqof1.exe: seqof1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o seqof1 $^
+
+seqof1$(OBJ): seqof1.c asn.h utility.h
+
+set1: set1.exe
+	$(DOT_SLASH)set1
+
+set1.exe: set1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o set1 $^
+
+set1$(OBJ): set1.c asn.h utility.h
+
+set2: set2.exe
+	$(DOT_SLASH)set2
+
+set2.exe: set2$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o set2 $^
+
+set2$(OBJ): set2.c asn.h utility.h
+
+setof1: setof1.exe
+	$(DOT_SLASH)setof1
+
+setof1.exe: setof1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o setof1 $^
+
+setof1$(OBJ): setof1.c asn.h utility.h
+
+tag1: tag1.exe
+	$(DOT_SLASH)tag1
+
+tag1.exe: tag1$(OBJ) asn$(OBJ) utility$(OBJ) $(A2C_LIB)
+NET:	$(CC) $** $(LFLAGS)
+MONO:	$(CC) -o tag1 $^
+
+tag1$(OBJ): tag1.c asn.h utility.h
+
+utility$(OBJ): utility.h
+
+asn.c asn.h: asn.asn $(A2C)
+	$(MONO) $(A2C) asn.asn
+
+
+clean:
+NET:	del asn.c asn.h *.obj *.exe *.pdb *.ilk
+MONO:	rm asn.c asn.h *.o *.exe
+
+

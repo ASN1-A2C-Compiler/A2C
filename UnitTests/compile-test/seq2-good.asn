@@ -1,0 +1,35 @@
+--   This test case looks at:
+--
+--   1.  Recursive sequences
+--
+
+Seq2 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+    S1 ::= SEQUENCE {
+        i1 INTEGER,
+        s2 S2
+    }
+
+
+    S2 ::= SEQUENCE {
+        i2 INTEGER,
+        s1 S1 OPTIONAL
+    }
+
+    S3 ::= SEQUENCE {
+        i1 INTEGER,
+        s4 S4
+    }
+
+    S4 ::= SEQUENCE {
+        i2 INTEGER,
+        c1 CHOICE {
+            i3 INTEGER,
+            s3 S3
+        }
+    }
+
+END
+
+       

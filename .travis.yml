@@ -9,4 +9,10 @@ script:
   - cd HouseKeeping
   - make mono
   - cd ..
-  - make -f makefile
+  - make -f makefile all
+  - cd UnitTests/compile-test
+  - make -f makefile all
+
+after_script:
+  - cd ../runtime-test/C
+  - make -f makefile all

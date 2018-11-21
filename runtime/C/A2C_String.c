@@ -211,7 +211,7 @@ A2C_ERROR A2C_string_init(PVOID pv, PC_A2C_DESCRIPTOR pdesc)
 
 #ifndef NO_INIT
     ps->string = &Zero;
-#endif // NO_INIT
+#endif
 
     return A2C_ERROR_Success;
 }
@@ -881,7 +881,7 @@ A2C_ERROR A2C_GENERAL_STRING_compare(A2C_GENERAL_STRING const * pLeft, A2C_GENER
 A2C_ERROR A2C_GENERAL_STRING_copy(A2C_GENERAL_STRING * pLeft, A2C_GENERAL_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
     return A2C_ERROR_Success;
 }
@@ -1152,7 +1152,7 @@ A2C_ERROR A2C_GRAPHIC_STRING_compare(A2C_GRAPHIC_STRING const * pLeft, A2C_GRAPH
 A2C_ERROR A2C_GRAPHIC_STRING_copy(A2C_GRAPHIC_STRING * pLeft, A2C_GRAPHIC_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
     return A2C_ERROR_Success;
 }
@@ -1416,7 +1416,7 @@ A2C_ERROR A2C_IA5_STRING_compare(A2C_IA5_STRING const * pLeft, A2C_IA5_STRING co
 A2C_ERROR A2C_IA5_STRING_copy(A2C_IA5_STRING * pLeft, A2C_IA5_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
     return A2C_ERROR_Success;
 }
@@ -1719,7 +1719,7 @@ A2C_ERROR A2C_NUMERIC_STRING_compare(A2C_NUMERIC_STRING const * pLeft, A2C_NUMER
 A2C_ERROR A2C_NUMERIC_STRING_copy(A2C_NUMERIC_STRING * pLeft, A2C_NUMERIC_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
     return A2C_ERROR_Success;
 }
@@ -1801,7 +1801,7 @@ A2C_ERROR A2C_NUMERIC_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CO
                 
                 A2C_SetContextNum(pcxt, iFrame, -1);
 
-                snprintf(rgch, sizeof(rgch), "Invalid character %s", *sz);
+                snprintf(rgch, sizeof(rgch), "Invalid character %c", *sz);
                 return A2C_Validate_Print(pdesc, pcxt, "NumericString", rgch, pstm);
             }
         }
@@ -2013,7 +2013,7 @@ A2C_ERROR A2C_PRINTABLE_STRING_copy(A2C_PRINTABLE_STRING * pLeft, A2C_PRINTABLE_
 {
     unreferenced(pdesc);
     
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
     return A2C_ERROR_Success;
@@ -2308,7 +2308,7 @@ A2C_ERROR A2C_TELETEX_STRING_compare(A2C_TELETEX_STRING const * pLeft, A2C_TELET
 A2C_ERROR A2C_TELETEX_STRING_copy(A2C_TELETEX_STRING * pLeft, A2C_TELETEX_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
 
@@ -2943,7 +2943,7 @@ A2C_ERROR A2C_UTF8_STRING_copy(A2C_UTF8_STRING * pLeft, A2C_UTF8_STRING const * 
 {
     unreferenced(pdesc);
 
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
 
     return A2C_ERROR_Success;
@@ -3266,7 +3266,7 @@ A2C_ERROR A2C_VIDEOTEX_STRING_compare(A2C_VIDEOTEX_STRING const * pLeft, A2C_VID
 A2C_ERROR A2C_VIDEOTEX_STRING_copy(A2C_VIDEOTEX_STRING * pLeft, A2C_VIDEOTEX_STRING const * pRight, PC_A2C_DESCRIPTOR pdesc)
 {
     unreferenced(pdesc);
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
 
@@ -3541,7 +3541,7 @@ A2C_ERROR A2C_VISIBLE_STRING_copy(A2C_VISIBLE_STRING * pLeft, A2C_VISIBLE_STRING
 {
     unreferenced(pdesc);
 
-    pLeft->string = _strdup(pRight->string);
+    pLeft->string = strdup(pRight->string);
     if (pLeft->string == NULL) return A2C_ERROR_outOfMemory;
 
     return A2C_ERROR_Success;
@@ -3624,7 +3624,7 @@ A2C_ERROR A2C_VISIBLE_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CO
                 
                 A2C_SetContextNum(pcxt, iFrame, -1);
 
-                snprintf(rgch, sizeof(rgch), "Invalid character %s", *sz);
+                snprintf(rgch, sizeof(rgch), "Invalid character %c", *sz);
                 return A2C_Validate_Print(pdesc, pcxt, "VisibleString", rgch, pstm);
             }
         }

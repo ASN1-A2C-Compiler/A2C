@@ -1,0 +1,31 @@
+Seq3 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+    S1 ::= SEQUENCE {
+        i1 INTEGER,
+        s2 S2
+    }
+
+
+    S2 ::= SEQUENCE {
+        i2 INTEGER,
+        s1 S1 OPTIONAL
+    }
+
+
+    S6 ::= SEQUENCE {
+        type OBJECT IDENTIFIER,
+        value INTEGER
+    }
+
+    S3 ::= CHOICE { c1 SO4 }
+
+    SO4 ::= SEQUENCE OF S5
+
+    S5 ::= SET OF S6
+
+    
+
+END
+
+       

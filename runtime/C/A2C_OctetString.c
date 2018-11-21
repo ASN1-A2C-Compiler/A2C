@@ -452,7 +452,7 @@ A2C_ERROR A2C_OCTET_STRING_copy(A2C_OCTET_STRING * posLeft, A2C_OCTET_STRING con
 /// <returns>A2C_ERROR code</returns>
 --- */
 
-A2C_ERROR A2C_OCTET_STRING_validate(A2C_OCTET_STRING const * pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
+A2C_ERROR A2C_OCTET_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
 {
     A2C_ERROR           err;
     int                 iFrame;
@@ -886,7 +886,7 @@ A2C_ERROR A2C_OPEN_OCTET_STRING_copy(A2C_OPEN_OCTET_STRING * poosLeft, A2C_OPEN_
 /// <returns>A2C_ERROR code</returns>
 --- */
 
-A2C_ERROR A2C_OPEN_OCTET_STRING_validate(A2C_OPEN_OCTET_STRING const * pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
+A2C_ERROR A2C_OPEN_OCTET_STRING_validate(PCVOID pv, PC_A2C_DESCRIPTOR pdesc, A2C_CONTEXT * pcxt, int * pf, PA2C_STREAM pstm)
 {
     unreferenced(pv);
     unreferenced(pdesc);
@@ -1156,8 +1156,8 @@ A2C_ERROR A2C_OPEN_OCTET_STRING_RELATION_decode_ber(A2C_COMPONENT_RELATIONS * pI
     A2C_TAG_VALUE iValue;
 #ifdef UNUSED
     BYTE *      pb = NULL;
-#endif // UNUSED
-
+#endif
+    
     unreferenced(pdesc);
     
     /*
@@ -1267,7 +1267,7 @@ A2C_ERROR A2C_OPEN_OCTET_STRING_RELATION_decode_ber(A2C_COMPONENT_RELATIONS * pI
 
 #ifdef UNUSED
     free(pb);
-#endif // UNUSED
+#endif
 
     return err;
 

@@ -1,0 +1,32 @@
+Int1 DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+I1 ::= INTEGER
+
+I2 ::= [1] INTEGER
+
+I3 ::= [2] IMPLICIT INTEGER
+
+I4 ::= [1] I1
+
+I5 ::= INTEGER (1..4)
+
+i5-1 I5 ::= 1
+
+i5-2 I5 ::= 10
+
+a INTEGER ::= 1
+
+T1 ::= INTEGER { a(2) }
+
+T2 ::= INTEGER { a(3), b(a) }
+
+c T2 ::= b
+
+d T2 ::= a
+
+T3 ::= INTEGER { a(-1), b(0), c(1) }
+
+e INTEGER ::= i5-1
+
+END

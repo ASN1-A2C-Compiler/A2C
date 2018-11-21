@@ -394,7 +394,7 @@ A2C_ERROR A2C_GetDataFromStream(PA2C_STREAM pstm, PBYTE * ppb, int * pcb)
     
     if (cb & 0xffff0000) return A2C_ERROR_bufferOverRun;
     
-    *pcb = cb;
+    *pcb = (int) cb;
     return err;
 }
 

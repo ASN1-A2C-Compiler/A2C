@@ -399,7 +399,7 @@ ErrorChecks:
             if (err >= A2C_ERROR_Success) {
                 /*  It parsed ot ignore this */
             }
-            else if ((err == A2C_ERROR_tagMismatch) || (err = A2C_ERROR_needMoreData)) {
+            else if ((err == A2C_ERROR_tagMismatch) || (err == A2C_ERROR_needMoreData)) {
                 /* M00QEUST - see above note */
                 /* Copy over the value */
                 /* M00QUEST - What if it really is parsing and needs more data? */

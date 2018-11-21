@@ -1,5 +1,5 @@
 all:
-	@echo Must specify an option
+	@echo Must specify either 'mono' or 'net' as a target
 
 mono:
 	@echo "This batch file deletes the current makefiles and copies"
@@ -54,6 +54,24 @@ mono:
 	@echo "Copying makefile for the main directory"
 	cp main-makefile-Mono ../makefile$(EXT)
 
+	@echo ""
+	@echo "Deleting current makefile for the unit compile test directory"
+	rm -f ../UnitTests/compile-test/makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	cp unittest-compile-makefile-Mono ../UnitTests/compile-test/makefile$(EXT)
+
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	rm -f ../UnitTests/runtime-test/C/makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	cp UnitTest-runtime-C-makefile-Mono ../UnitTests/runtime-test/C/makefile$(EXT)
+
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	rm -f ../tools/compare/makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	cp tools-compare-makefile-Mono ../tools/compare/makefile$(EXT)
+
 net:
 	@echo off
 	@echo This batch file deletes the current makefiles and copies
@@ -100,3 +118,21 @@ net:
 	del /F ..\makefile
 	@echo Copying makefile for the main directory
 	copy main-makefile-NET ..\makefile
+
+	@echo ""
+	@echo "Deleting current makefile for the unit compile test directory"
+	del /F ..\UnitTests\compile-test\makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	copy UnitTest-compile-makefile-NET ..\UnitTests\compile-test\makefile$(EXT)
+
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	del /F ..\UnitTests\runtime-test\C\makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	copy UnitTest-runtime-C-makefile-NET ..\UnitTests\runtime-test\C\makefile$(EXT)
+
+	@echo ""
+	@echo "Deleting current makefile for the unit test - C runtime test directory"
+	del /F ..\tools\compare\makefile$(EXT)
+	@echo "Copying makefile for the main directory"
+	copy tools-compare-makefile-NET ..\tools\compare\makefile$(EXT)
