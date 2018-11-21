@@ -3103,7 +3103,14 @@ namespace asn_compile_cs
                         //
                         // symlst.Add(sym);
 
-                        m_rvImports.AddWarning(new Error(ErrorNumber.ImportModuleNotFound, m_tknImports, sym.m_symModule.name));
+                        if (Program.FindModule(sym.m_symModule)) {
+                            symlst.Add(sym);
+                        }
+                        else {
+
+                            m_rvImports.AddWarning(new Error(ErrorNumber.ImportModuleNotFound, m_tknImports,
+                                                             sym.m_symModule.name));
+                        }
                         continue;
                     }
                 }
@@ -4972,8 +4979,8 @@ namespace asn_compile_cs
         }
 
         /// <summary>
-        /// Monkey though the list of tokens removing extranious EOL markers.
-        /// We keep those that immediately preceed a '::=' token and then we
+        /// Monkey though the list of tokens removing extraneous EOL markers.
+        /// We keep those that immediately preceded a '::=' token and then we
         /// can skip directly to them when we are processing command lines.
         /// </summary>
         /// 

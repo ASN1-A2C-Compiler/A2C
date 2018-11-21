@@ -155,6 +155,11 @@ The options are:
 -const=<string> (default is "no")
     The const keyword is emitted as part of the compiler output.
 
+-lookup=<file name>
+    Load a file which contains pointers to where modules can be found.  The file contains lines with the following formats:
+    File: <OID> <filename>
+    New: <OID-old> <OID-new>
+
 For example, to compile sample.asn with debugging turned on and the output files called "new-sample", you would use one of the following command lines:
     a2c -inline=yes -out=new-sample -debug=1 sample.asn (.NET)
     mono a2c.exe -inline=static -out=new-sample -debug=1 sample.asn (Mono)
