@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
-using Microsoft.SqlServer.Server;
 
 namespace asn_compile_cs
 {
