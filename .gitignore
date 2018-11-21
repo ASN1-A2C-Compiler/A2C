@@ -27,6 +27,10 @@
 *.out
 *.app
 
+# VS Files
+.vs
+*.user
+
 # Emacs files
 *~
 \#*

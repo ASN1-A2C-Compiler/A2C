@@ -17,7 +17,7 @@ namespace asn_compile_cs
         public bool fEmit = true;
         public Boolean fEOLHint = false;
         public CompileVersion iVersion = CompileVersion.V2002;
-
+        public string LookupFile = null;
 
         public bool Parse(string str)
         {
@@ -88,7 +88,7 @@ namespace asn_compile_cs
                     fAnonUnion = true;
                 }
                 else {
-                    Console.Error.WriteLine("Must be either yes or no for anonomous-union option");
+                    Console.Error.WriteLine("Must be either yes or no for anonymous-union option");
                     PrintUsage();
                     Error.CErrors += 1;
                 }
@@ -139,6 +139,9 @@ namespace asn_compile_cs
                     Error.CErrors += 1;
                 }
             }
+            else if (str.StartsWith("-lookup=")) {
+                LookupFile = str.Substring(8);
+            }
             else {
                 Console.Error.WriteLine("Unknown option '{0}'", str);
                 Error.CErrors += 1;
@@ -159,7 +162,7 @@ namespace asn_compile_cs
         {
             TextWriter errorWriter = Console.Error;
 
-            errorWriter.WriteLine("Usage: asntmpl -v[file name] -p[base name] <asn files>");
+            errorWriter.WriteLine("Usage: a2c -v[file name] -p[base name] <asn files>");
             errorWriter.WriteLine();
             errorWriter.WriteLine("\te\tEmit File");
             errorWriter.WriteLine("\tp\tParse File");
@@ -177,22 +180,23 @@ namespace asn_compile_cs
     {
         public static int DebugLevel = 0;
         public static int IntSize = 32;
-        public static Boolean FNoOptimize = false;        // Use internal program optmizations
+        public static bool FNoOptimize = false;        // Use internal program optimizations
         public static int UseConst = 0;
         public static CmdLineArgs args = new CmdLineArgs();
+        private static List<AsnFile> _newList = null;
 
         static void Main(string[] rgstrArgs)
         {
             AF_FLAGS afFlags = AF_FLAGS.None;
             Boolean fFailure;
             Boolean fRepeat = false;
-            List<AsnFile> lst = new List<AsnFile>();
+        List<AsnFile> lst = new List<AsnFile>();
 
-            //
-            //  Setup some global items that we use later
-            //
+        //
+        //  Setup some global items that we use later
+        //
 
-            Type.Init();
+        Type.Init();
             OIDNode.Init();
 
             //
@@ -205,42 +209,7 @@ namespace asn_compile_cs
                     args.Parse(str);
                 }
                 else {
-                    try {
-                        //
-                        StreamReader sr;
-
-                        //  Open the file and create a tokenizer for it
-
-                        sr = File.OpenText(str);
-
-                        Lexer lex = new Lexer(sr);
-
-                        do {
-                            AsnFile af = new AsnFile(str, args.fEmit);
-
-                            //
-                            //  Tokenize the file
-                            //
-
-                            if (af.ToTokens(lex)) {
-                                //
-                                //  Add to the list of files to be processed
-                                //
-
-                                lst.Add(af);
-                            }
-                            else {
-                                break;
-                            }
-                        } while (true);
-                    }
-                    catch (FileNotFoundException e) {
-                        Error err = new Error(ErrorNumber.FileNotFound);
-                        err.AddObject(e.FileName);
-
-                        Console.Error.WriteLine(err);
-                        Error.CErrors += 1;
-                    }
+                    TokenizeFile(str);
                 }
             }
 
@@ -249,10 +218,19 @@ namespace asn_compile_cs
                 Environment.Exit(-1);
             }
 
+            if (args.LookupFile != null) {
+                LoadLookupFile(args.LookupFile);
+            }
+
+            args.fEmit = false;
+
 
             //
             //  Start doing the parsing of the file now
             //
+
+            lst = Program._newList;
+            Program._newList = null;
 
             if (args.fEOLHint) {
                 foreach (AsnFile af in lst) {
@@ -292,6 +270,14 @@ namespace asn_compile_cs
                 }
 
                 //
+
+                if (Program._newList != null) {
+                    lst.AddRange(Program._newList);
+                    Program._newList = null;
+                    fRepeat = true;
+                }
+
+                //
                 //  If we are marked as no repeat and
                 //  we have a failure, then pass in the flag to print errors out
                 //
@@ -311,7 +297,7 @@ namespace asn_compile_cs
             }
 
             //
-            //  Need to possibly propigate information forward
+            //  Need to possibly propagate information forward
             //
             //  A2C requires that a name space be defined - so use A2C if none is set
 
@@ -387,18 +373,156 @@ namespace asn_compile_cs
                 break;
             }
 
+            if (emitter != null) {
+                foreach (AsnFile af in lst) af.PreEmit(emitter);
 
-            foreach (AsnFile af in lst) af.PreEmit(emitter);
+                foreach (AsnFile af in lst) {
+                    af.Emit(emitter);
+                }
 
-            foreach (AsnFile af in lst) {
-                af.Emit(emitter);
+                emitter.Close();
             }
-
-            emitter.Close();
 
             if (Error.CErrors > 0) {
                 Environment.Exit(-1);
             }
+        }
+
+        public static void TokenizeFile(string str)
+        {
+            try {
+                //
+                StreamReader sr;
+
+                //  Open the file and create a tokenizer for it
+
+                sr = File.OpenText(str);
+
+                Lexer lex = new Lexer(sr);
+
+                do {
+                    AsnFile af = new AsnFile(str, args.fEmit);
+
+                    //
+                    //  Tokenize the file
+                    //
+
+                    if (af.ToTokens(lex)) {
+                        //
+                        //  Add to the list of files to be processed
+                        //
+
+                        if (_newList == null) _newList = new List<AsnFile>();
+                        if (args.fEOLHint) {
+                            af.UseEOLHints();
+
+                        }
+
+                        _newList.Add(af);
+                    }
+                    else {
+                        break;
+                    }
+                } while (true);
+            }
+            catch (FileNotFoundException e) {
+                Error err = new Error(ErrorNumber.FileNotFound);
+                err.AddObject(e.FileName);
+
+                Console.Error.WriteLine(err);
+                Error.CErrors += 1;
+            }
+        }
+
+        public static bool FindModule(Symbol symModule)
+        {
+            //  We don't have anything to do the lookup with
+
+            if (args.LookupFile == null) return false;
+            
+            //  Do we have an OID to do the look with?
+
+            if (symModule.value == null) return false;
+
+            if (symModule.value.valueType != ValueType.List) return false;
+            ValueList vList =  symModule.value.valueList;
+            string oid = "";
+            foreach (Value v in vList) {
+                oid += "." + v.oidNode.iValue.ToString();
+            }
+
+            oid = oid.Substring(1);
+
+            do {
+                if (ModuleLookup.ContainsKey(oid)) {
+                    LookupItem item = ModuleLookup[oid];
+                    if (item.Op) {
+                        oid = item.Value;
+                    }
+                    else {
+                        if (!item.Added) {
+                            TokenizeFile(item.Value);
+                            item.Added = true;
+                        }
+                        return true;
+                    }
+                }
+                else {
+                    return false;
+                }
+            } while (oid != null);
+
+            return false;
+        }
+
+        private static readonly Dictionary<string, LookupItem> ModuleLookup = new Dictionary<string, LookupItem>();
+
+        /*
+         *
+         * File format:
+         * FILE: <OID string value>  <File name>
+         * NEW: <OID string value>  <OID string value>
+         */
+        private static void LoadLookupFile(string fileName)
+        {
+            string[] lines = File.ReadAllLines(fileName);
+            foreach (string line in lines) {
+                string[] fields = line.Split();
+                if (fields.Length != 3) {
+                    Console.WriteLine($"Lookup file error. Line '{line}' ignored.");
+                    continue;
+                }
+
+                LookupItem item = new LookupItem();
+                item.Value = fields[2];
+
+                switch (fields[0].ToLower()) {
+                    case "file:":
+                        break;
+
+                    case "new:":
+                        item.Op = true;
+                        break;
+
+                    default:
+                        item = null;
+                        break;
+                }
+
+                if (item == null) {
+                    Console.WriteLine($"Lookup file error. Line '{line}' ignored.");
+                    continue;
+                }
+
+                ModuleLookup.Add(fields[1], item);
+            }
+        }
+
+        class LookupItem
+        {
+            public string Value { get; set; }
+            public bool Op { get; set; }
+            public bool Added { get; set; }
         }
     }
 }
